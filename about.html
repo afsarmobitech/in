@@ -266,6 +266,114 @@
             filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.3));
         }
 
+        /* Services Division Section */
+        .services-division {
+            margin: 80px 0;
+        }
+
+        .division-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .division-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .division-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(106, 76, 147, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .division-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .division-card:hover::before {
+            opacity: 1;
+        }
+
+        .division-header {
+            margin-bottom: 30px;
+        }
+
+        .division-icon {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .division-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--cream);
+        }
+
+        .division-subtitle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .division-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .division-features li {
+            margin-bottom: 12px;
+            opacity: 0.9;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+
+        .division-features li i {
+            color: var(--gold);
+            font-size: 0.9rem;
+            width: 20px;
+        }
+
+        .specialist-info {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .specialist-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
         /* Features Section */
         .features-grid {
             display: grid;
@@ -483,6 +591,10 @@
                 gap: 40px;
             }
             
+            .division-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
             }
@@ -499,6 +611,10 @@
             
             .shop-icon {
                 font-size: 6rem;
+            }
+            
+            .division-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -559,6 +675,62 @@
                     <i class="fas fa-store shop-icon"></i>
                     <h3>Afsar Mobitech</h3>
                     <p>Premium Mobile & Digital Service Center</p>
+                </div>
+            </div>
+
+            <!-- Services Division Section -->
+            <div class="services-division">
+                <div class="section-title">
+                    <h2>Our Specialized Services</h2>
+                    <p>Expert services handled by specialized professionals</p>
+                </div>
+                
+                <div class="division-grid">
+                    <!-- Mobile Repair Division -->
+                    <div class="division-card">
+                        <div class="division-header">
+                            <i class="fas fa-tools division-icon"></i>
+                            <h3 class="division-title">Mobile Phone Repair Shop</h3>
+                            <div class="division-subtitle">Expert IC Level Mobile Repair</div>
+                        </div>
+                        
+                        <ul class="division-features">
+                            <li><i class="fas fa-wrench"></i> IC Level Mobile Repair</li>
+                            <li><i class="fas fa-skull-crossbones"></i> Dead Phone Repair</li>
+                            <li><i class="fas fa-tint"></i> Water Damage Repair</li>
+                            <li><i class="fas fa-battery-empty"></i> No Charge Fix</li>
+                            <li><i class="fas fa-microchip"></i> Motherboard Repair</li>
+                            <li><i class="fas fa-bolt"></i> Power IC Replacement</li>
+                        </ul>
+                        
+                        <div class="specialist-info">
+                            <div class="specialist-name">Rk Khan</div>
+                            <p>Expert Mobile Repair Specialist with 8+ years experience in IC level repairs</p>
+                        </div>
+                    </div>
+
+                    <!-- Digital Services Division -->
+                    <div class="division-card">
+                        <div class="division-header">
+                            <i class="fas fa-laptop-code division-icon"></i>
+                            <h3 class="division-title">Government Digital Services</h3>
+                            <div class="division-subtitle">All Government & Digital Services</div>
+                        </div>
+                        
+                        <ul class="division-features">
+                            <li><i class="fas fa-id-card"></i> Aadhaar Services</li>
+                            <li><i class="fas fa-credit-card"></i> PAN Card Services</li>
+                            <li><i class="fas fa-user-check"></i> eKYC Verification</li>
+                            <li><i class="fas fa-file-alt"></i> RTI Applications</li>
+                            <li><i class="fas fa-passport"></i> Passport Services</li>
+                            <li><i class="fas fa-university"></i> Banking Services</li>
+                        </ul>
+                        
+                        <div class="specialist-info">
+                            <div class="specialist-name">Afsarali Khan</div>
+                            <p>Digital Services Specialist handling all government and documentation services</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -647,6 +819,7 @@
                     <p><strong>Udyam Registration:</strong> UDYAM-GJ-24-0044877</p>
                     <p><strong>Service Areas:</strong> Vadodara & Surrounding Regions</p>
                     <p><strong>Owner:</strong> Afsarali Khan</p>
+                    <p><strong>Repair Specialist:</strong> Rk Khan</p>
                 </div>
             </div>
             <div class="copyright">
