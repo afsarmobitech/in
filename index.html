@@ -3,154 +3,808 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afsar Mobitech – Mobile & Digital Service Hub</title>
-
+    <title>Afsar Mobitech - Your Trusted Mobile & Digital Service Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-            color: white;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--light);
             overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
-            background: rgba(255,255,255,0.05);
-            padding: 20px 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            letter-spacing: 1px;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
         }
 
         nav a {
-            color: white;
-            margin-left: 20px;
+            color: var(--light);
             text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
         }
 
         nav a:hover {
-            color: #00ffe7;
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .hero {
-            padding: 120px 40px;
-            text-align: center;
-            animation: fadeIn 1.5s ease;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
         }
 
-        .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--light), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--glass-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-animation {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 500px;
+            perspective: 1000px;
+        }
+
+        .mobile-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+        }
+
+        .mobile-front, .mobile-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-front {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            transform: rotateY(0deg);
+        }
+
+        .mobile-back {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            transform: rotateY(180deg);
+        }
+
+        .mobile-screen {
+            width: 85%;
+            height: 90%;
+            background: #1a202c;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .screen-content i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
             opacity: 0.8;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .services {
-            padding: 50px 40px;
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        .box {
-            background: rgba(255,255,255,0.08);
+        .service-box {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
             padding: 30px;
-            border-radius: 16px;
             text-align: center;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            transform-style: preserve-3d;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--shadow);
         }
 
-        .box:hover {
-            transform: scale(1.07) rotateX(8deg) rotateY(-8deg);
-            border: 1px solid #00ffe7;
-            box-shadow: 0 12px 30px rgba(0,255,231,0.3);
+        .service-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(247, 37, 133, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
         }
 
-        .box a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
+        .service-box:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-box:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .service-box:hover .service-icon {
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .service-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-box {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            animation: float 3s ease-in-out infinite;
         }
 
         footer {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            text-align: center;
-            margin-top: 40px;
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 20, 0.9);
+            padding: 60px 0 30px;
         }
 
-        footer p {
-            margin: 5px 0;
-            font-size: 14px;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            opacity: 0.8;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
             opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .page-load {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 5px solid rgba(67, 97, 238, 0.2);
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 992px) {
+            .mobile-animation { width: 300px; height: 400px; }
+            .hero h1 { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu { display: block; }
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: rgba(26, 26, 46, 0.95);
+                backdrop-filter: blur(10px);
+                transition: var(--transition);
+                padding: 30px;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            nav.active { left: 0; }
+            nav ul { flex-direction: column; gap: 20px; }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 50px;
+            }
+            .mobile-animation {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin: 0 auto;
+            }
+            .cta-buttons { justify-content: center; }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title h2 { font-size: 2rem; }
+            .mobile-animation { width: 250px; height: 350px; }
         }
     </style>
 </head>
-
 <body>
+    <div class="page-load" id="pageLoad">
+        <div class="loader"></div>
+    </div>
 
-<header>
-    <h1>Afsar Mobitech</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="mobiles.html">Mobiles</a>
-        <a href="accessories.html">Accessories</a>
-        <a href="repair.html">Repair</a>
-        <a href="csc.html">Digital Services</a>
-        <a href="about.html">About</a>
-    </nav>
-</header>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-mobile-alt logo-icon"></i>
+                <span class="logo-text">Afsar Mobitech</span>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mobiles.html">Mobiles</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                    <li><a href="repair.html">Repair</a></li>
+                    <li><a href="csc.html">CSC Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<section class="hero">
-    <h2>Your Trusted Mobile & Digital Service Hub</h2>
-    <p>Premium mobile sales, accessories, repair and all government/CSC services under one roof.</p>
-</section>
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Your Trusted Mobile & Digital Service Hub</h1>
+                <p>One-stop solution for all your mobile needs - sales, repairs, accessories, and digital services in Vadodara, Gujarat.</p>
+                <div class="cta-buttons">
+                    <a href="mobiles.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Mobiles</a>
+                    <a href="accessories.html" class="btn btn-secondary"><i class="fas fa-headphones"></i> Accessories</a>
+                    <a href="repair.html" class="btn btn-secondary"><i class="fas fa-tools"></i> Repair</a>
+                    <a href="csc.html" class="btn btn-secondary"><i class="fas fa-digital-tachograph"></i> CSC Services</a>
+                </div>
+            </div>
+            <div class="mobile-animation">
+                <div class="mobile-3d">
+                    <div class="mobile-front">
+                        <div class="mobile-screen">
+                            <div class="screen-content">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h3>Afsar Mobitech</h3>
+                                <p>Your Digital Partner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-back">
+                        <div class="mobile-screen">
+                            <div class="screen-content">
+                                <i class="fas fa-cogs"></i>
+                                <h3>Premium Services</h3>
+                                <p>Quality Guaranteed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="services">
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Main Services</h2>
+                <p>Comprehensive mobile and digital solutions tailored to your needs</p>
+            </div>
+            <div class="services-grid">
+                <a href="mobiles.html" class="service-box">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3>Mobile Sales</h3>
+                    <p>Latest smartphones from all major brands at competitive prices</p>
+                </a>
+                <a href="accessories.html" class="service-box">
+                    <i class="fas fa-headphones service-icon"></i>
+                    <h3>Accessories</h3>
+                    <p>Quality mobile accessories to enhance your device experience</p>
+                </a>
+                <a href="repair.html" class="service-box">
+                    <i class="fas fa-tools service-icon"></i>
+                    <h3>Repair Services</h3>
+                    <p>Expert repair for all mobile devices with warranty</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-id-card service-icon"></i>
+                    <h3>Aadhaar Services</h3>
+                    <p>Update, correction, PVC card printing and other Aadhaar services</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-university service-icon"></i>
+                    <h3>Banking & Pension</h3>
+                    <p>Banking services, pension, and financial assistance</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-shield-alt service-icon"></i>
+                    <h3>Insurance</h3>
+                    <p>PMFBY, life insurance, personal accident and more</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-tractor service-icon"></i>
+                    <h3>Agriculture</h3>
+                    <p>Farmer registration, crop insurance and agricultural services</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-graduation-cap service-icon"></i>
+                    <h3>Education</h3>
+                    <p>Admission, certificates, and educational services</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-vote-yea service-icon"></i>
+                    <h3>Election</h3>
+                    <p>Voter ID services and election-related assistance</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-bolt service-icon"></i>
+                    <h3>Electricity</h3>
+                    <p>Bill payment, new connection and electricity services</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-landmark service-icon"></i>
+                    <h3>Government Services</h3>
+                    <p>All government to citizen services under one roof</p>
+                </a>
+                <a href="csc.html" class="service-box">
+                    <i class="fas fa-heartbeat service-icon"></i>
+                    <h3>Health</h3>
+                    <p>Telemedicine, health cards and medical services</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <div class="box"><a href="mobiles.html">📱 Mobile Sales</a></div>
-    <div class="box"><a href="accessories.html">🎧 Accessories</a></div>
-    <div class="box"><a href="repair.html">🔧 Mobile Repair</a></div>
-    <div class="box"><a href="csc.html">🪪 Aadhaar Services</a></div>
-    <div class="box"><a href="csc.html">🏦 Banking & Pension</a></div>
-    <div class="box"><a href="csc.html">📚 Education</a></div>
-    <div class="box"><a href="csc.html">⚡ Electricity Bill</a></div>
-    <div class="box"><a href="csc.html">🎟 Election Services</a></div>
-    <div class="box"><a href="csc.html">🌾 Agriculture</a></div>
-    <div class="box"><a href="csc.html">🩺 Health Services</a></div>
-    <div class="box"><a href="csc.html">📄 Government Services</a></div>
-    <div class="box"><a href="about.html">ℹ About Us</a></div>
+    <section class="section" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Discover what makes us the preferred choice for mobile and digital services</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fas fa-award feature-icon"></i>
+                    <h3>Trusted Service</h3>
+                    <p>With years of experience and thousands of satisfied customers, we've built a reputation for reliability and trust.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <h3>Fast Service</h3>
+                    <p>We understand the importance of your time. Our services are designed to be quick and efficient.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-home feature-icon"></i>
+                    <h3>All Under One Roof</h3>
+                    <p>From mobile sales to digital services, we provide comprehensive solutions at a single location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot No. 145, GF-7, Tower A, Bharat Complex, Por GIDC, Raman Gamdi, Vadodara, Gujarat – 391243</p>
+                    <p><i class="fas fa-phone"></i> +91 8320304380</p>
+                    <p><i class="fas fa-envelope"></i> info@afsarmobitech.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="mobiles.html">Mobile Sales</a>
+                    <a href="accessories.html">Accessories</a>
+                    <a href="repair.html">Repair Services</a>
+                    <a href="csc.html">CSC Services</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <a href="mobiles.html">Mobile Phones</a>
+                    <a href="accessories.html">Mobile Accessories</a>
+                    <a href="repair.html">Mobile Repair</a>
+                    <a href="csc.html">Aadhaar Services</a>
+                    <a href="csc.html">Banking Services</a>
+                    <a href="csc.html">Government Services</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Business Info</h3>
+                    <p><strong>GST:</strong> 24KCVPK4570E1Z5</p>
+                    <p><strong>Udyam No:</strong> UDYAM-GJ-24-0044877</p>
+                    <p><strong>Opening Hours:</strong></p>
+                    <p>Monday - Saturday: 10:00 AM - 8:00 PM</p>
+                    <p>Sunday: 10:00 AM - 2:00 PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Afsar Mobitech. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-<footer>
-    <p>Afsar Mobitech, Raman Gamdi, Vadodara</p>
-    <p>GST: 24KCVPK4570E1Z5 | UDYAM-GJ-24-0044877</p>
-    <p>Mobile: +91 8320304380</p>
-</footer>
+    <script>
+        window.addEventListener('load', function() {
+            const pageLoad = document.getElementById('pageLoad');
+            setTimeout(() => {
+                pageLoad.style.opacity = '0';
+                setTimeout(() => {
+                    pageLoad.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
 
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const mobileMenu = document.getElementById('mobileMenu');
+        const nav = document.getElementById('nav');
+
+        mobileMenu.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+            });
+        });
+
+        const serviceBoxes = document.querySelectorAll('.service-box');
+        serviceBoxes.forEach(box => {
+            box.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotateX(5deg)';
+            });
+            
+            box.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateX(0)';
+            });
+        });
+    </script>
 </body>
 </html>
