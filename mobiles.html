@@ -1,86 +1,202 @@
+<!-- mobiles.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobiles – Afsar Mobitech</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobiles – Afsar Mobitech</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<style>
 
-    body {
-      font-family: system-ui, sans-serif;
-      background: #eff4ff;
-      color: #111827;
-      padding: 20px;
-    }
+body{
+    margin:0;
+    font-family: "Poppins", sans-serif;
+    background:#eef2f7;
+}
 
-    h1 {
-      text-align: center;
-      font-size: 40px;
-      margin-bottom: 20px;
-      color: #0066ff;
-      text-shadow: 0 6px 16px rgba(0, 102, 255, 0.35);
-    }
+/* ===== Navbar ===== */
+.navbar{
+    width:100%;
+    background:white;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:999;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-      margin-top: 20px;
-    }
+.navbar a{
+    text-decoration:none;
+    color:#2d2d2d;
+    margin-left:30px;
+    font-weight:600;
+    font-size:15px;
+}
 
-    .card {
-      background: #ffffff;
-      border-radius: 22px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 10px 10px 28px rgba(148, 163, 184, 0.35),
-                  -10px -10px 28px #ffffff;
-      transition: 0.2s;
-    }
+/* ===== Page Title Section ===== */
+.header{
+    padding-top:120px;
+    text-align:center;
+}
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 14px 14px 32px rgba(0,0,0,0.15);
-    }
+.header h1{
+    font-size:38px;
+    font-weight:800;
+    color:#0d1b3d;
+}
 
-    .card img {
-      width: 100%;
-      max-width: 180px;
-      border-radius: 18px;
-      margin-bottom: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+.header p{
+    font-size:17px;
+    color:#4a4a4a;
+    margin-top:-10px;
+}
 
-    .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+/* ===== 3D Card Container ===== */
+.section{
+    width:90%;
+    margin:40px auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
 
-    .card p {
-      color: #4b5563;
-      font-size: 14px;
-    }
+/* ===== Card Style ===== */
+.card{
+    width:31%;
+    background:white;
+    padding:25px;
+    border-radius:22px;
+    text-align:center;
+    transition:all 0.4s ease;
+    box-shadow:0 10px 40px rgba(0,0,0,0.10);
+    transform-style:preserve-3d;
+    cursor:pointer;
+}
 
-    a.back {
-      margin-top: 30px;
-      display: inline-block;
-      font-size: 16px;
-      color: #0066ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+.card:hover{
+    transform:translateY(-10px) scale(1.04);
+    box-shadow:0 15px 60px rgba(0,0,0,0.18);
+}
+
+/* 3D Floating Icon */
+.icon{
+    width:90px;
+    height:90px;
+    margin:0 auto;
+    background:linear-gradient(135deg, #3a7bd5, #00d2ff);
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    color:white;
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+    transform:translateZ(20px);
+}
+
+.card h3{
+    margin-top:20px;
+    font-size:22px;
+    color:#0a1647;
+}
+
+.card p{
+    color:#575757;
+    font-size:15px;
+    margin-top:10px;
+    line-height:23px;
+}
+
+/* Scroll Animation */
+.fadein{
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.7s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:900px){
+    .card{ width:47%; }
+}
+
+@media(max-width:600px){
+    .card{ width:100%; }
+    .navbar{ padding:15px 20px; }
+}
+
+</style>
+
 </head>
-
 <body>
 
-  <h1>Mobiles Collection</h1>
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+    <div style="font-size:22px; font-weight:800; color:#004aad;">Afsar Mobitech</div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="mobiles.html">Mobiles</a>
+        <a href="repair.html">Repair</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="csc.html">CSC</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
 
-  <div class="grid">
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?smartphone,5g" alt="">
-      <h3>Latest 5G Smartphones</h3>
-      <p>Best performance, ca
+<!-- ===== Page Header ===== -->
+<div class="header fadein">
+    <h1>Mobile Phones</h1>
+    <p>Honest guidance • Best price • Multi-brand smartphones</p>
+</div>
+
+<!-- ===== Card Section ===== -->
+<div class="section">
+
+    <!-- Card 1 -->
+    <div class="card fadein">
+        <div class="icon">📱</div>
+        <h3>Latest Smartphones</h3>
+        <p>5G mobiles, premium models & trending phones with full guidance, bill & warranty assurance.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card fadein">
+        <div class="icon">📞</div>
+        <h3>Budget & Entry Phones</h3>
+        <p>Trusted low-price phones with excellent battery backup for students, seniors & daily usage.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card fadein">
+        <div class="icon">🔄</div>
+        <h3>Exchange & Upgrade</h3>
+        <p>Exchange your old device with the best value and receive honest recommendations.</p>
+    </div>
+
+</div>
+
+<script>
+// Scroll Animation
+const elements = document.querySelectorAll('.fadein');
+function showElements(){
+    const trigger = window.innerHeight - 80;
+    elements.forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        if(top < trigger){ el.classList.add('show'); }
+    });
+}
+window.addEventListener('scroll', showElements);
+showElements();
+</script>
+
+</body>
+</html>
