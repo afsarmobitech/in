@@ -1,43 +1,178 @@
-<section style="padding:50px 20px; background:#eef6ff;">
-  <h2 style="font-size:32px; font-weight:900; margin-bottom:20px;">Our Services</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afsar Mobitech – Premium Services</title>
 
-  <div class="service-grid">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, sans-serif;
+        background: #eef3ff;
+    }
 
-    <!-- Mobiles -->
-    <a href="mobiles.html" class="service-card">
-      <div class="icon">📱</div>
-      <h3>Mobiles</h3>
-      <p>New smartphones, budget phones, exchange & upgrade help.</p>
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 40px;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a3cff;
+    }
+    .menu a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 17px;
+    }
+    .menu a:hover {
+        color: #1a3cff;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 80px 40px;
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        color: #0e1b57;
+        animation: fadeIn 1s;
+    }
+    .hero p {
+        font-size: 20px;
+        color: #555;
+        margin-top: 10px;
+        animation: fadeIn 1.2s;
+    }
+
+    /* Services Section */
+    .services-section {
+        padding: 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .service-card {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        cursor: pointer;
+        transform-style: preserve-3d;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .icon {
+        font-size: 46px;
+        margin-bottom: 15px;
+        color: #1a3cff;
+    }
+
+    .service-card h3 {
+        margin: 0;
+        font-size: 22px;
+        color: #0e1b57;
+        font-weight: 700;
+    }
+
+    .service-card p {
+        font-size: 15px;
+        color: #555;
+        margin-top: 8px;
+    }
+
+    /* Fade animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">Afsar Mobitech</div>
+    <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="mobiles.html">Mobiles</a>
+        <a href="repair.html">Repair</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="csc.html">CSC Services</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Welcome to Afsar Mobitech</h1>
+    <p>Trusted solutions for Mobiles, Repairs, CSC Services & Accessories</p>
+</div>
+
+<!-- Services -->
+<div class="services-section">
+
+    <a href="mobiles.html" style="text-decoration:none;">
+        <div class="service-card">
+            <div class="icon">📱</div>
+            <h3>Mobiles</h3>
+            <p>Latest, Budget & Feature Phones – Expert Suggestions.</p>
+        </div>
     </a>
 
-    <!-- Repair -->
-    <a href="repair.html" class="service-card">
-      <div class="icon">🛠️</div>
-      <h3>Repair & Service</h3>
-      <p>Trusted repairing with expert technicians & warranty support.</p>
+    <a href="repair.html" style="text-decoration:none;">
+        <div class="service-card">
+            <div class="icon">🛠️</div>
+            <h3>Repair Service</h3>
+            <p>Fast & trusted mobile repair with high-quality parts.</p>
+        </div>
     </a>
 
-    <!-- Accessories -->
-    <a href="accessories.html" class="service-card">
-      <div class="icon">🎧</div>
-      <h3>Accessories</h3>
-      <p>Earphones, chargers, smartwatches, premium gadgets.</p>
+    <a href="accessories.html" style="text-decoration:none;">
+        <div class="service-card">
+            <div class="icon">🎧</div>
+            <h3>Accessories</h3>
+            <p>Premium chargers, earphones, smart gadgets & more.</p>
+        </div>
     </a>
 
-    <!-- CSC Digital Services -->
-    <a href="csc.html" class="service-card">
-      <div class="icon">💼</div>
-      <h3>CSC Digital Services</h3>
-      <p>Aadhaar, banking, insurance, bill payment & govt services.</p>
+    <a href="csc.html" style="text-decoration:none;">
+        <div class="service-card">
+            <div class="icon">💼</div>
+            <h3>CSC Services</h3>
+            <p>Aadhaar, Banking, PAN, PM Kisan, Insurance & more.</p>
+        </div>
     </a>
 
-    <!-- About -->
-    <a href="about.html" class="service-card">
-      <div class="icon">🏪</div>
-      <h3>About Us</h3>
-      <p>Business details, address, timings & social media links.</p>
+    <a href="about.html" style="text-decoration:none;">
+        <div class="service-card">
+            <div class="icon">ℹ️</div>
+            <h3>About Us</h3>
+            <p>Know more about Afsar Mobitech & customer support.</p>
+        </div>
     </a>
 
-  </div>
+</div>
 
-</section>
+</body>
+</html>
