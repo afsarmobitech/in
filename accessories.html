@@ -1,111 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accessories – Afsar Mobitech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Accessories - Afsar Mobitech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --deep-purple: #2D1B69;
+            --light-purple: #6A4C93;
+            --cream: #F8F4E9;
+            --dark: #1A1A2E;
+            --accent: #FF6B6B;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
 
-    body {
-      font-family: system-ui, sans-serif;
-      background: #f3f4ff;
-      color: #111827;
-      padding: 20px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 18px;
-      color: #2563eb;
-      text-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-    }
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--deep-purple) 50%, var(--light-purple) 100%);
+            color: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-      margin-top: 20px;
-    }
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .card {
-      background: #ffffff;
-      border-radius: 22px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 10px 10px 28px rgba(148, 163, 184, 0.35),
-                  -10px -10px 28px #ffffff;
-      transition: 0.2s;
-    }
+        /* Header Styles - Same as index.html */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: var(--transition);
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 14px 14px 32px rgba(0,0,0,0.15);
-    }
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(26, 26, 46, 0.95);
+        }
 
-    .card img {
-      width: 100%;
-      max-width: 180px;
-      border-radius: 18px;
-      margin-bottom: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .card p {
-      color: #4b5563;
-      font-size: 14px;
-    }
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
 
-    a.back {
-      margin-top: 30px;
-      display: inline-block;
-      font-size: 16px;
-      color: #0066ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
-</head>
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--cream);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
 
-<body>
+        .logo-text span {
+            color: var(--gold);
+        }
 
-  <h1>Mobile Accessories</h1>
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
 
-  <div class="grid">
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?earbuds,headphones" alt="">
-      <h3>Audio & Wearables</h3>
-      <p>Neckbands, TWS earbuds, Bluetooth headphones, speakers & smartwatches.</p>
-    </div>
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
 
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?phone,case" alt="">
-      <h3>Covers & Protection</h3>
-      <p>Back covers, premium cases, rugged protection & tempered glass fitting.</p>
-    </div>
+        nav a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
 
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?charger,cable" alt="">
-      <h3>Cables & Chargers</h3>
-      <p>Fast chargers, Type-C cables, OTG, car chargers & data cables.</p>
-    </div>
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gold);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
 
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?mobile,accessories" alt="">
-      <h3>Daily Use Gadgets</h3>
-      <p>Stands, holders, selfie sticks, card readers & more useful gadgets.</p>
-    </div>
-  </div>
+        nav a:hover::after {
+            width: 100%;
+        }
 
-  <a href="index.html" class="back">⬅ Back to Home</a>
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--cream);
+            transition: var(--transition);
+        }
 
-</body>
-</html>
+        .mobile-menu:hover {
+            color: var(--gold);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--cream);
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-hero h1 span {
+            color: var(--gold);
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Categories Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--cream);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .category-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--gold);
+        }
+
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .category-card h3 {
+            font-size: 1.4rem;
+            color: var(--cream);
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--light-purple) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--cream);
+        }
+
+        .product-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .product-features li {
+            margin-bottom: 8px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-features li i {
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 20px 0;
+            text-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var
