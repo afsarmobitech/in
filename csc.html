@@ -1,146 +1,726 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSC & Digital Services – Afsar Mobitech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Repair Services - Afsar Mobitech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --deep-purple: #2D1B69;
+            --light-purple: #6A4C93;
+            --cream: #F8F4E9;
+            --dark: #1A1A2E;
+            --accent: #FF6B6B;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
 
-    body {
-      font-family: system-ui, sans-serif;
-      background: #ecfeff;
-      color: #111827;
-      padding: 20px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 8px;
-      color: #0ea5e9;
-      text-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
-    }
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--deep-purple) 50%, var(--light-purple) 100%);
+            color: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
 
-    h2 {
-      text-align: center;
-      font-size: 16px;
-      margin-bottom: 20px;
-      color: #1f2937;
-    }
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-      margin-top: 20px;
-    }
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: var(--transition);
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
 
-    .card {
-      background: #ffffff;
-      border-radius: 22px;
-      padding: 20px;
-      text-align: left;
-      box-shadow: 10px 10px 28px rgba(148, 163, 184, 0.35),
-                  -10px -10px 28px #ffffff;
-      transition: 0.2s;
-    }
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(26, 26, 46, 0.95);
+        }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 14px 14px 32px rgba(0,0,0,0.15);
-    }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .card img {
-      width: 100%;
-      max-width: 180px;
-      border-radius: 18px;
-      margin-bottom: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
 
-    .card p {
-      color: #4b5563;
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--cream);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
 
-    .card ul {
-      padding-left: 18px;
-      font-size: 14px;
-      color: #4b5563;
-    }
+        .logo-text span {
+            color: var(--gold);
+        }
 
-    a.back {
-      margin-top: 30px;
-      display: inline-block;
-      font-size: 16px;
-      color: #0284c7;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gold);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--cream);
+            transition: var(--transition);
+        }
+
+        .mobile-menu:hover {
+            color: var(--gold);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--cream);
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-hero h1 span {
+            color: var(--gold);
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--cream);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(106, 76, 147, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+            transition: var(--transition);
+            filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .service-card p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: var(--cream);
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 20px 0;
+            text-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gold), var(--light-purple));
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: white;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary::before {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--cream);
+        }
+
+        /* Warranty Section */
+        .warranty-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 50px 40px;
+            text-align: center;
+            margin-top: 80px;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--gold);
+        }
+
+        .warranty-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 8, 23, 0.95);
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        .footer-column p, .footer-column a {
+            opacity: 0.8;
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            color: var(--cream);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+            color: var(--dark);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--glass-border);
+            opacity: 0.7;
+            font-size: 1rem;
+            color: var(--cream);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 85%;
+                height: calc(100vh - 90px);
+                background: rgba(26, 26, 46, 0.95);
+                backdrop-filter: blur(20px);
+                transition: var(--transition);
+                padding: 40px 30px;
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+                border-right: 1px solid var(--glass-border);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .page-hero {
+                padding-top: 140px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-mobile-alt logo-icon"></i>
+                <span class="logo-text">Afsar <span>Mobitech</span></span>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mobiles.html">Mobiles</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                    <li><a href="repair.html">Repair</a></li>
+                    <li><a href="csc.html">CSC Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <h1>CSC & Digital Services</h1>
-  <h2>Authorised CSC VLE – CSC VLE ID: 262135150014</h2>
+    <section class="page-hero">
+        <div class="container">
+            <h1>Expert <span>Mobile Repair Services</span></h1>
+            <p>Professional repair solutions for all mobile devices with warranty and genuine parts</p>
+        </div>
+    </section>
 
-  <div class="grid">
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?aadhaar,india" alt="">
-      <h3>Aadhaar & eKYC</h3>
-      <ul>
-        <li>Aadhaar demographic update</li>
-        <li>Mobile update & linking</li>
-        <li>PVC Aadhaar print</li>
-        <li>Best finger detection (BFD)</li>
-      </ul>
-    </div>
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Repair Services</h2>
+                <p>Comprehensive mobile repair solutions for all brands and models</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3>Screen Replacement</h3>
+                    <p>Professional screen replacement with original quality displays and warranty</p>
+                    <div class="price-tag">Starting from ₹999</div>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-tools"></i> Get Service</a>
+                </div>
 
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?bank,online" alt="">
-      <h3>Banking & Pension</h3>
-      <ul>
-        <li>Basic banking support</li>
-        <li>Life certificate / Jeevan Pramaan</li>
-        <li>Pension related services</li>
-        <li>Account related digital help</li>
-      </ul>
-    </div>
+                <div class="service-card">
+                    <i class="fas fa-battery-full service-icon"></i>
+                    <h3>Battery Replacement</h3>
+                    <p>Genuine battery replacement to restore your phone's original battery life</p>
+                    <div class="price-tag">Starting from ₹799</div>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-tools"></i> Get Service</a>
+                </div>
 
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?electricity,bill" alt="">
-      <h3>Bills & Utility Payments</h3>
-      <ul>
-        <li>Electricity bill payment</li>
-        <li>Water & GAS bill</li>
-        <li>Mobile & DTH recharge</li>
-        <li>Other digital payments</li>
-      </ul>
-    </div>
+                <div class="service-card">
+                    <i class="fas fa-camera service-icon"></i>
+                    <h3>Camera Repair</h3>
+                    <p>Expert camera module repair and replacement for clear photography</p>
+                    <div class="price-tag">Starting from ₹1,299</div>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-tools"></i> Get Service</a>
+                </div>
 
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?india,government" alt="">
-      <h3>Government & Farmer Services</h3>
-      <ul>
-        <li>Ration card & certificate services</li>
-        <li>Farmer registration & schemes</li>
-        <li>Insurance & yojna forms</li>
-        <li>Online applications & support</li>
-      </ul>
-    </div>
-  </div>
+                <div class="service-card">
+                    <i class="fas fa-plug service-icon"></i>
+                    <h3>Charging Port Repair</h3>
+                    <p>Fix charging issues with professional port replacement service</p>
+                    <div class="price-tag">Starting from ₹599</div>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-tools"></i> Get Service</a>
+                </div>
 
-  <a href="index.html" class="back">⬅ Back to Home</a>
+                <div class="service-card">
+                    <i class="fas fa-volume-up service-icon"></i>
+                    <h3>Speaker & Microphone</h3>
+                    <p>Audio issues resolution with quality speaker and microphone replacement</p>
+                    <div class="price-tag">Starting from ₹699</div>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-tools"></i> Get Service</a>
+                </div>
 
+                <div class="service-card">
+                    <i class="fas fa-water service-icon"></i>
+                    <h3>Water Damage Repair</h3>
+                    <p>Professional water damage treatment and component level repair</p>
+                    <div class="price-tag">Starting from ₹1,499</div>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-tools"></i> Get Service</a>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>Our Repair Process</h2>
+                <p>Simple and transparent process for all your repair needs</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Diagnosis</h3>
+                    <p>Free diagnosis to identify the exact issue with your device</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Quotation</h3>
+                    <p>Transparent pricing with no hidden costs</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Repair</h3>
+                    <p>Expert repair using genuine parts and tools</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Testing</h3>
+                    <p>Comprehensive testing to ensure quality service</p>
+                </div>
+            </div>
+
+            <div class="warranty-card">
+                <i class="fas fa-shield-alt warranty-icon"></i>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">90 Days Warranty</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">All our repairs come with 90 days warranty on service and parts</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot No. 145, GF-7, Tower A, Bharat Complex, Por GIDC, Raman Gamdi, Vadodara, Gujarat – 391243</p>
+                    <p><i class="fas fa-phone"></i> +91 8320304380</p>
+                    <p><i class="fas fa-phone"></i> +91 8320394380 (WhatsApp)</p>
+                    <p><i class="fas fa-envelope"></i> afsarmobitech@gmail.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Navigation</h3>
+                    <a href="index.html">Home</a>
+                    <a href="mobiles.html">Mobile Sales</a>
+                    <a href="accessories.html">Accessories</a>
+                    <a href="repair.html">Repair Services</a>
+                    <a href="csc.html">CSC Digital Services</a>
+                    <a href="about.html">About Our Shop</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Business Details</h3>
+                    <p><strong>GST Number:</strong> 24KCVPK4570E1Z5</p>
+                    <p><strong>Udyam Registration:</strong> UDYAM-GJ-24-0044877</p>
+                    <p><strong>Service Areas:</strong> Vadodara & Surrounding Regions</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Afsar Mobitech. All Rights Reserved. | Premium Mobile & Digital Service Center</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const nav = document.getElementById('nav');
+
+        mobileMenu.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            mobileMenu.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+                mobileMenu.classList.remove('fa-times');
+            });
+        });
+    </script>
 </body>
 </html>
