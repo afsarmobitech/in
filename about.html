@@ -233,6 +233,22 @@
             line-height: 1.8;
         }
 
+        .owner-info {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .owner-info h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
         .about-image {
             background: var(--glass);
             backdrop-filter: blur(20px);
@@ -334,4 +350,339 @@
         footer::before {
             content: '';
             position: absolute;
-           
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        .footer-column p, .footer-column a {
+            opacity: 0.8;
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            color: var(--cream);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+            color: var(--dark);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--glass-border);
+            opacity: 0.7;
+            font-size: 1rem;
+            color: var(--cream);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 85%;
+                height: calc(100vh - 90px);
+                background: rgba(26, 26, 46, 0.95);
+                backdrop-filter: blur(20px);
+                transition: var(--transition);
+                padding: 40px 30px;
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+                border-right: 1px solid var(--glass-border);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .page-hero {
+                padding-top: 140px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .shop-icon {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-mobile-alt logo-icon"></i>
+                <span class="logo-text">Afsar <span>Mobitech</span></span>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mobiles.html">Mobiles</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                    <li><a href="repair.html">Repair</a></li>
+                    <li><a href="csc.html">CSC Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>About <span>Afsar Mobitech</span></h1>
+            <p>Your trusted partner for mobile and digital services in Vadodara</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+                <p>Trusted mobile and digital service center since establishment</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Afsar Mobitech</h3>
+                    <p>Afsar Mobitech is a premium mobile and digital service center located in the heart of Vadodara, Gujarat. We have been serving the community with excellence and dedication, providing comprehensive solutions for all mobile and digital needs.</p>
+                    
+                    <p>Our journey began with a vision to create a one-stop solution for mobile enthusiasts and digital service seekers. Today, we proudly serve thousands of satisfied customers with our wide range of services including mobile sales, accessories, expert repairs, and comprehensive CSC digital services.</p>
+                    
+                    <p>At Afsar Mobitech, we believe in quality, transparency, and customer satisfaction. Our team of experienced professionals is committed to providing the best service experience with genuine products and expert solutions.</p>
+
+                    <div class="owner-info">
+                        <h4>Owner: Afsarali Khan</h4>
+                        <p>With years of experience in the mobile and digital services industry, Afsarali Khan leads our team with expertise and dedication to customer satisfaction.</p>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <i class="fas fa-store shop-icon"></i>
+                    <h3>Afsar Mobitech</h3>
+                    <p>Premium Mobile & Digital Service Center</p>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>What makes us the preferred choice for mobile and digital services</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-award feature-icon"></i>
+                    <h3>Trusted Service</h3>
+                    <p>Years of experience with thousands of satisfied customers</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <h3>Fast Service</h3>
+                    <p>Quick and efficient service without compromising quality</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3>Quality Guarantee</h3>
+                    <p>Genuine products and services with warranty</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-home feature-icon"></i>
+                    <h3>All Under One Roof</h3>
+                    <p>Complete mobile and digital solutions at one location</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <div class="section-title">
+                    <h2>Visit Our Store</h2>
+                    <p>Come and experience our premium services</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <h3>Address</h3>
+                        <p>Plot No. 145, GF-7, Tower A<br>Bharat Complex, Por GIDC<br>Raman Gamdi, Vadodara<br>Gujarat – 391243</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <h3>Opening Hours</h3>
+                        <p>Monday - Saturday: 10:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 2:00 PM</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <h3>Contact</h3>
+                        <p>+91 8320304380<br>+91 8320394380 (WhatsApp)<br>afsarmobitech@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot No. 145, GF-7, Tower A, Bharat Complex, Por GIDC, Raman Gamdi, Vadodara, Gujarat – 391243</p>
+                    <p><i class="fas fa-phone"></i> +91 8320304380</p>
+                    <p><i class="fas fa-phone"></i> +91 8320394380 (WhatsApp)</p>
+                    <p><i class="fas fa-envelope"></i> afsarmobitech@gmail.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Navigation</h3>
+                    <a href="index.html">Home</a>
+                    <a href="mobiles.html">Mobile Sales</a>
+                    <a href="accessories.html">Accessories</a>
+                    <a href="repair.html">Repair Services</a>
+                    <a href="csc.html">CSC Digital Services</a>
+                    <a href="about.html">About Our Shop</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Business Details</h3>
+                    <p><strong>GST Number:</strong> 24KCVPK4570E1Z5</p>
+                    <p><strong>Udyam Registration:</strong> UDYAM-GJ-24-0044877</p>
+                    <p><strong>Service Areas:</strong> Vadodara & Surrounding Regions</p>
+                    <p><strong>Owner:</strong> Afsarali Khan</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Afsar Mobitech. All Rights Reserved. | Premium Mobile & Digital Service Center</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const nav = document.getElementById('nav');
+
+        mobileMenu.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            mobileMenu.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+                mobileMenu.classList.remove('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>
