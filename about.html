@@ -5,12 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>About Us - Afsar Mobitech</title>
+<title>Afsar Mobitech - About</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
 
@@ -21,93 +19,77 @@ background:#0f0f1a;
 color:#fff;
 }
 
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:linear-gradient(135deg,#1a1a2e,#2d1b69);
-}
-
-.hero h1{
-font-size:3rem;
-}
-
-.hero span{
-color:#D4AF37;
-}
-
-.cta{
-margin-top:20px;
-padding:12px 30px;
-border-radius:50px;
-background:linear-gradient(45deg,#D4AF37,#FF6B6B);
-border:none;
-color:#fff;
-font-weight:600;
-cursor:pointer;
-}
-
-/* SECTION */
-.section{
-padding:80px 20px;
+/* MAIN LAYOUT */
+.container{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
+padding:40px;
 max-width:1200px;
 margin:auto;
 }
 
-.title{
-text-align:center;
-margin-bottom:40px;
-}
-
-.title h2{
-font-size:2.5rem;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-}
-
-.card{
+/* LEFT CONTENT */
+.left{
 background:rgba(255,255,255,0.05);
 padding:30px;
 border-radius:20px;
 backdrop-filter:blur(20px);
-transition:0.4s;
 }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px rgba(212,175,55,0.4);
-}
-
-/* FEATURES */
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.feature{
-text-align:center;
-padding:30px;
-background:rgba(255,255,255,0.05);
-border-radius:20px;
-}
-
-.feature i{
-font-size:30px;
-color:#D4AF37;
+.left h1{
+font-size:2.5rem;
 margin-bottom:10px;
 }
 
-/* WHATSAPP */
+.left span{
+color:#D4AF37;
+}
+
+.left p{
+opacity:0.9;
+line-height:1.7;
+}
+
+/* RIGHT PANEL */
+.right{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(20px);
+position:sticky;
+top:20px;
+height:fit-content;
+}
+
+/* BOX */
+.box{
+margin-bottom:20px;
+padding:15px;
+border-radius:15px;
+background:rgba(255,255,255,0.03);
+}
+
+/* TITLE */
+.box h3{
+margin-bottom:10px;
+color:#D4AF37;
+}
+
+/* LINKS */
+.links a{
+display:block;
+color:#fff;
+text-decoration:none;
+margin:6px 0;
+font-size:14px;
+}
+
+.links a:hover{
+color:#D4AF37;
+}
+
+/* WHATSAPP BUTTON */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -116,13 +98,16 @@ background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-font-size:20px;
+font-size:22px;
 }
 
 /* MOBILE */
-@media(max-width:768px){
-.grid{
+@media(max-width:900px){
+.container{
 grid-template-columns:1fr;
+}
+.right{
+position:static;
 }
 }
 
@@ -132,111 +117,72 @@ grid-template-columns:1fr;
 
 <body>
 
-<!-- HERO -->
+<div class="container">
 
-<section class="hero">
+<!-- LEFT -->
+
+<div class="left">
+
 <h1>About <span>Afsar Mobitech</span></h1>
-<p>Trusted Mobile & Digital Service Center in Vadodara</p>
-<button class="cta">Visit Store</button>
-</section>
 
-<!-- ABOUT -->
+<p>
+Afsar Mobitech is a trusted mobile and digital service center in Vadodara.  
+We provide complete solutions including mobile repair, accessories, and government services like Aadhaar, PAN, eKYC and more.
+</p>
 
-<section class="section">
-<div class="title">
-<h2>Our Story</h2>
-</div>
-
-<div class="grid">
-
-<div class="card" data-aos="fade-right">
-<h3>Who We Are</h3>
-<p>Afsar Mobitech is a premium mobile and digital service center providing complete solutions including mobile sales, accessories, repairs and government services.</p>
-</div>
-
-<div class="card" data-aos="fade-left">
-<h3>Our Mission</h3>
-<p>To provide fast, reliable and transparent services with customer satisfaction and trust as our top priority.</p>
-</div>
+<p>
+We focus on fast service, genuine parts, and customer satisfaction.  
+Our goal is to provide reliable digital and mobile solutions under one roof.
+</p>
 
 </div>
-</section>
 
-<!-- SERVICES -->
+<!-- RIGHT SIDE PANEL -->
 
-<section class="section">
-<div class="title">
-<h2>Our Services</h2>
+<div class="right">
+
+<div class="box">
+<h3>Business Info</h3>
+<p><b>AFSAR MOBITECH</b></p>
+<p>Plot No. 145, Tower A, GF-7, Bharat Complex Por GIDC,<br>
+Raman Gamdi, Por Taluka: Vadodara,<br>
+Vadodara, Gujarat - 391243</p>
+
+<p><b>Mobile:</b> 8320394380</p>
+
+<p><b>GSTIN:</b> 24KCVPK4570E1Z5</p>
+<p><b>Udyam:</b> UDYAM-GJ-24-0044877</p>
 </div>
 
-<div class="grid">
+<div class="box">
+<h3>Social Media</h3>
 
-<div class="card" data-aos="zoom-in">
-<h3>Mobile Repair</h3>
-<p>IC level repair, dead phone, water damage, motherboard repair.</p>
+<div class="links">
+
+<a href="https://wa.me/message/7DFELJHMA4OOL1">WhatsApp</a>
+
+<a href="https://x.com/AfsarMobitech">X (Twitter)</a>
+
+<a href="https://www.youtube.com/@AfsarMobitech">YouTube</a>
+
+<a href="https://www.linkedin.com/in/afsarmobitech/">LinkedIn</a>
+
+<a href="https://www.instagram.com/afsarmobitech/">Instagram</a>
+
+<a href="https://www.facebook.com/people/Afsar-Mobitech/61583477535849/">Facebook</a>
+
 </div>
-
-<div class="card" data-aos="zoom-in">
-<h3>Digital Services</h3>
-<p>Aadhaar, PAN, eKYC, Passport, Banking and CSC services.</p>
-</div>
-
-</div>
-</section>
-
-<!-- FEATURES -->
-
-<section class="section">
-<div class="title">
-<h2>Why Choose Us</h2>
-</div>
-
-<div class="features">
-
-<div class="feature" data-aos="fade-up">
-<i class="fas fa-award"></i>
-<h4>Trusted</h4>
-</div>
-
-<div class="feature" data-aos="fade-up">
-<i class="fas fa-bolt"></i>
-<h4>Fast Service</h4>
-</div>
-
-<div class="feature" data-aos="fade-up">
-<i class="fas fa-shield-alt"></i>
-<h4>Quality</h4>
 </div>
 
 </div>
-</section>
 
-<!-- CONTACT -->
-
-<section class="section">
-<div class="title">
-<h2>Contact</h2>
 </div>
 
-<div class="card" data-aos="fade-up">
-<p>Vadodara, Gujarat</p>
-<p>+91 8320394380</p>
-<p>afsarmobitech@gmail.com</p>
-</div>
-
-</section>
-
-<!-- WHATSAPP -->
+<!-- WHATSAPP FLOAT -->
 
 <a href="https://wa.me/918320394380" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-<script>
-AOS.init();
-</script>
 
 </body>
 </html>
