@@ -1,188 +1,1145 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Afsar Mobitech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #E8C84A;
+            --gold-dim: rgba(212,175,55,0.13);
+            --deep-purple: #2D1B69;
+            --light-purple: #6A4C93;
+            --cream: #F8F4E9;
+            --cream-dim: rgba(248,244,233,0.65);
+            --dark: #1A1A2E;
+            --dark-mid: #0D0D1A;
+            --glass: rgba(255,255,255,0.04);
+            --glass-mid: rgba(255,255,255,0.07);
+            --glass-strong: rgba(255,255,255,0.12);
+            --glass-border: rgba(255,255,255,0.1);
+            --gold-border: rgba(212,175,55,0.28);
+            --shadow-deep: 0 30px 60px rgba(0,0,0,0.5);
+            --shadow-gold: 0 10px 40px rgba(212,175,55,0.2);
+            --sidebar-w: 300px;
+            --transition: all 0.45s cubic-bezier(0.23,1,0.32,1);
+            --ease-out: cubic-bezier(0.23,1,0.32,1);
+        }
 
-<title>Afsar Mobitech - About</title>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{background:var(--dark-mid);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.75;}
+        ::selection{background:var(--gold);color:var(--dark);}
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        /* AMBIENT */
+        .ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+        .ambient::before{content:'';position:absolute;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle,rgba(45,27,105,0.5) 0%,transparent 70%);top:-300px;left:-250px;animation:drift1 22s ease-in-out infinite alternate;}
+        .ambient::after{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(106,76,147,0.25) 0%,transparent 70%);bottom:-150px;right:-150px;animation:drift2 28s ease-in-out infinite alternate;}
+        .ambient-orb{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:drift3 18s ease-in-out infinite alternate;pointer-events:none;z-index:0;}
+        @keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(100px,80px) scale(1.1)}}
+        @keyframes drift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-80px,-60px) scale(1.15)}}
+        @keyframes drift3{0%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(-40%,-45%) scale(1.2)}}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        @keyframes slideRight{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes slideLeft{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes scaleUp{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+        @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+        @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.4)}50%{box-shadow:0 0 0 12px rgba(212,175,55,0)}}
+        @keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        @keyframes borderGlow{0%,100%{border-color:rgba(212,175,55,0.2)}50%{border-color:rgba(212,175,55,0.5)}}
+        @keyframes typewriter{from{width:0}to{width:100%}}
 
-<style>
+        /* PARTICLE CANVAS */
+        #particles{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#0f0f1a;
-color:#fff;
-}
+        /* HEADER */
+        header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:18px 0;background:rgba(13,13,26,0.75);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid var(--gold-border);transition:var(--transition);}
+        header.scrolled{padding:12px 0;background:rgba(13,13,26,0.97);box-shadow:0 4px 40px rgba(0,0,0,0.6);}
+        .header-inner{width:92%;max-width:1600px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+        .logo{display:flex;align-items:center;gap:13px;text-decoration:none;}
+        .logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),#A07910);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:var(--dark);box-shadow:0 4px 20px rgba(212,175,55,0.4);transition:var(--transition);position:relative;overflow:hidden;}
+        .logo-icon::after{content:'';position:absolute;inset:-50%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.3) 50%,transparent 60%);animation:shimmer 3s infinite;}
+        .logo:hover .logo-icon{transform:rotate(8deg) scale(1.1);}
+        .logo-text{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:var(--cream);}
+        .logo-text span{color:var(--gold);}
+        nav ul{display:flex;list-style:none;gap:28px;align-items:center;}
+        nav a{color:var(--cream-dim);text-decoration:none;font-size:0.92rem;font-weight:500;position:relative;padding:5px 0;transition:color 0.3s;}
+        nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width 0.35s var(--ease-out);border-radius:2px;}
+        nav a:hover,nav a.active{color:var(--cream);}
+        nav a:hover::after,nav a.active::after{width:100%;}
+        .nav-cta{background:linear-gradient(135deg,var(--gold),#A07910)!important;color:var(--dark)!important;font-weight:600!important;padding:10px 22px!important;border-radius:9px;white-space:nowrap;transition:var(--transition)!important;}
+        .nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(212,175,55,0.45)!important;}
+        .nav-cta::after{display:none!important;}
+        .mobile-menu{display:none;font-size:1.5rem;cursor:pointer;color:var(--cream);transition:var(--transition);}
+        .mobile-menu:hover{color:var(--gold);}
 
-/* MAIN LAYOUT */
-.container{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:30px;
-padding:40px;
-max-width:1200px;
-margin:auto;
-}
+        /* PAGE LAYOUT */
+        .page-wrapper{display:flex;min-height:100vh;position:relative;z-index:1;padding-top:80px;}
 
-/* LEFT CONTENT */
-.left{
-background:rgba(255,255,255,0.05);
-padding:30px;
-border-radius:20px;
-backdrop-filter:blur(20px);
-}
+        /* SIDEBAR */
+        .sidebar{width:var(--sidebar-w);flex-shrink:0;position:sticky;top:80px;height:calc(100vh - 80px);overflow-y:auto;padding:28px 20px;border-right:1px solid var(--glass-border);background:rgba(8,8,20,0.8);backdrop-filter:blur(20px);display:flex;flex-direction:column;gap:20px;scrollbar-width:thin;scrollbar-color:var(--gold-border) transparent;}
+        .sidebar::-webkit-scrollbar{width:3px;}
+        .sidebar::-webkit-scrollbar-thumb{background:var(--gold-border);border-radius:4px;}
 
-.left h1{
-font-size:2.5rem;
-margin-bottom:10px;
-}
+        .sb-brand{text-align:center;padding-bottom:22px;border-bottom:1px solid var(--glass-border);}
+        .sb-logo-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--gold),#A07910);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--dark);margin:0 auto 14px;box-shadow:0 8px 32px rgba(212,175,55,0.35);animation:float 5s ease-in-out infinite;position:relative;overflow:hidden;}
+        .sb-logo-icon::after{content:'';position:absolute;inset:-50%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.25) 50%,transparent 60%);animation:shimmer 4s infinite;}
+        .sb-brand h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:5px;}
+        .sb-brand h2 span{color:var(--gold);}
+        .sb-brand p{font-size:0.75rem;color:var(--cream-dim);letter-spacing:0.5px;}
 
-.left span{
-color:#D4AF37;
-}
+        .sb-block{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:20px;transition:var(--transition);}
+        .sb-block:hover{border-color:var(--gold-border);background:var(--glass-mid);}
+        .sb-title{font-size:0.68rem;font-weight:600;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+        .sb-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold-border),transparent);}
 
-.left p{
-opacity:0.9;
-line-height:1.7;
-}
+        .irow{display:flex;gap:12px;margin-bottom:13px;align-items:flex-start;}
+        .irow:last-child{margin-bottom:0;}
+        .iico{width:32px;height:32px;flex-shrink:0;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.74rem;transition:var(--transition);}
+        .irow:hover .iico{background:linear-gradient(135deg,var(--gold),#A07910);color:var(--dark);border-color:transparent;}
+        .itxt .lbl{font-size:0.67rem;font-weight:600;color:var(--gold);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:3px;}
+        .itxt p,.itxt a{font-size:0.82rem;color:var(--cream-dim);text-decoration:none;line-height:1.55;word-break:break-word;transition:color 0.3s;}
+        .itxt a:hover{color:var(--gold);}
 
-/* RIGHT PANEL */
-.right{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:20px;
-backdrop-filter:blur(20px);
-position:sticky;
-top:20px;
-height:fit-content;
-}
+        .reg-item{margin-bottom:13px;}
+        .reg-item:last-child{margin-bottom:0;}
+        .reg-lbl{font-size:0.68rem;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+        .reg-val{font-size:0.8rem;color:var(--cream);background:rgba(212,175,55,0.07);border:1px solid var(--gold-border);border-radius:8px;padding:7px 12px;font-weight:500;letter-spacing:0.3px;font-family:'DM Sans',monospace;}
 
-/* BOX */
-.box{
-margin-bottom:20px;
-padding:15px;
-border-radius:15px;
-background:rgba(255,255,255,0.03);
-}
+        .social-list{display:flex;flex-direction:column;gap:8px;}
+        .soc-link{display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:11px;text-decoration:none;border:1px solid var(--glass-border);transition:var(--transition);color:var(--cream-dim);font-size:0.85rem;font-weight:500;}
+        .soc-link:hover{border-color:var(--gold-border);background:var(--gold-dim);color:var(--cream);transform:translateX(5px);}
+        .sico{width:30px;height:30px;flex-shrink:0;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;transition:var(--transition);}
+        .soc-link:hover .sico{transform:scale(1.1);}
+        .s-wa{background:rgba(37,211,102,0.15);color:#25D366;}
+        .s-x{background:rgba(255,255,255,0.1);color:#fff;}
+        .s-yt{background:rgba(255,0,0,0.15);color:#FF4444;}
+        .s-li{background:rgba(0,119,181,0.2);color:#0A9FD4;}
+        .s-ig{background:rgba(228,64,95,0.15);color:#E4405F;}
+        .s-fb{background:rgba(24,119,242,0.15);color:#4C8FF0;}
 
-/* TITLE */
-.box h3{
-margin-bottom:10px;
-color:#D4AF37;
-}
+        /* MAIN */
+        .main-content{flex:1;min-width:0;}
 
-/* LINKS */
-.links a{
-display:block;
-color:#fff;
-text-decoration:none;
-margin:6px 0;
-font-size:14px;
-}
+        /* ═══════════════ HERO ═══════════════ */
+        .hero{min-height:92vh;display:flex;align-items:center;padding:100px 60px 80px;position:relative;overflow:hidden;}
+        .hero-grid-bg{position:absolute;inset:0;background-image:
+            linear-gradient(rgba(212,175,55,0.025) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(212,175,55,0.025) 1px,transparent 1px);
+            background-size:80px 80px;
+            animation:fadeIn 1.5s ease;}
+        .hero-gradient{position:absolute;bottom:0;left:0;right:0;height:250px;background:linear-gradient(to top,var(--dark-mid),transparent);z-index:1;}
+        .hero-img-area{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:520px;height:520px;z-index:1;opacity:0.15;}
+        .hero-img-area::before{content:'';position:absolute;inset:0;border:2px solid var(--gold-border);border-radius:50%;animation:rotate 30s linear infinite;}
+        .hero-img-area::after{content:'';position:absolute;inset:30px;border:1px solid rgba(212,175,55,0.12);border-radius:50%;animation:rotate 20s linear infinite reverse;}
 
-.links a:hover{
-color:#D4AF37;
-}
+        .hero-body{position:relative;z-index:2;max-width:720px;}
+        .hero-badge{display:inline-flex;align-items:center;gap:10px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:50px;padding:8px 20px;font-size:0.77rem;font-weight:600;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:30px;animation:fadeUp 0.7s ease both;backdrop-filter:blur(10px);}
+        .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 2s infinite;box-shadow:0 0 6px var(--gold);}
+        .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:700;line-height:1.08;margin-bottom:22px;animation:fadeUp 0.7s 0.12s ease both;}
+        .hero h1 .gold{color:var(--gold);position:relative;display:inline-block;}
+        .hero h1 .gold::after{content:'';position:absolute;bottom:6px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;}
+        .hero-desc{font-size:1.08rem;color:var(--cream-dim);max-width:580px;line-height:1.9;margin-bottom:42px;animation:fadeUp 0.7s 0.24s ease both;}
+        .hero-stats{display:flex;gap:50px;animation:fadeUp 0.7s 0.36s ease both;}
+        .hero-stat{text-align:center;}
+        .stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:var(--gold);line-height:1;text-shadow:0 0 30px rgba(212,175,55,0.2);}
+        .stat-lbl{font-size:0.82rem;color:var(--cream-dim);font-weight:500;margin-top:6px;}
+        .hero-cta-row{display:flex;gap:16px;animation:fadeUp 0.7s 0.45s ease both;margin-bottom:48px;}
+        .btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),#A07910);color:var(--dark);font-weight:700;font-size:0.92rem;padding:14px 30px;border-radius:12px;text-decoration:none;transition:var(--transition);border:none;cursor:pointer;position:relative;overflow:hidden;}
+        .btn-primary::after{content:'';position:absolute;inset:-50%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.2) 50%,transparent 60%);transition:0.6s;}
+        .btn-primary:hover::after{transform:translateX(100%);}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(212,175,55,0.45);}
+        .btn-secondary{display:inline-flex;align-items:center;gap:10px;background:var(--glass);color:var(--cream);font-weight:600;font-size:0.92rem;padding:14px 30px;border-radius:12px;text-decoration:none;border:1px solid var(--gold-border);transition:var(--transition);}
+        .btn-secondary:hover{background:var(--gold-dim);border-color:var(--gold);transform:translateY(-3px);}
 
-/* WHATSAPP BUTTON */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-font-size:22px;
-}
+        /* ═══════════════ PHOTO GALLERY SECTION ═══════════════ */
+        .photo-showcase{padding:0 60px 100px;position:relative;}
+        .photo-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(3,160px);gap:16px;}
+        .photo-item{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;transition:var(--transition);border:1px solid var(--glass-border);}
+        .photo-item::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(13,13,26,0.8) 100%);z-index:1;transition:opacity 0.4s;}
+        .photo-item:hover{transform:scale(1.02);border-color:var(--gold-border);box-shadow:var(--shadow-gold);z-index:5;}
+        .photo-item:hover::before{opacity:0.5;}
+        .photo-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);}
+        .photo-item:hover img{transform:scale(1.08);}
+        .photo-caption{position:absolute;bottom:14px;left:16px;z-index:2;font-size:0.82rem;font-weight:600;color:var(--cream);opacity:0;transform:translateY(8px);transition:var(--transition);}
+        .photo-item:hover .photo-caption{opacity:1;transform:translateY(0);}
+        .photo-caption span{color:var(--gold);font-size:0.72rem;display:block;font-weight:500;margin-top:2px;}
+        .p1{grid-column:1/6;grid-row:1/3;}
+        .p2{grid-column:6/9;grid-row:1/2;}
+        .p3{grid-column:9/13;grid-row:1/2;}
+        .p4{grid-column:6/10;grid-row:2/4;}
+        .p5{grid-column:10/13;grid-row:2/3;}
+        .p6{grid-column:1/4;grid-row:3/4;}
+        .p7{grid-column:4/6;grid-row:3/4;}
+        .p8{grid-column:10/13;grid-row:3/4;}
 
-/* MOBILE */
-@media(max-width:900px){
-.container{
-grid-template-columns:1fr;
-}
-.right{
-position:static;
-}
-}
+        /* ═══════════════ SECTIONS ═══════════════ */
+        .section{padding:100px 60px;}
+        .sec-label{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:0.75rem;font-weight:600;letter-spacing:2.8px;text-transform:uppercase;margin-bottom:14px;}
+        .sec-label::before{content:'';display:block;width:28px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;}
+        .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.3rem,3.8vw,3.6rem);font-weight:700;line-height:1.12;margin-bottom:20px;}
+        .sec-title span{color:var(--gold);position:relative;}
+        .sec-sub{font-size:1.02rem;color:var(--cream-dim);max-width:550px;line-height:1.9;}
 
-</style>
+        /* ═══════════════ STORY ═══════════════ */
+        .story-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:72px;align-items:start;margin-top:55px;}
+        .sp{color:var(--cream-dim);font-size:1rem;line-height:1.95;margin-bottom:20px;}
+        .sp strong{color:var(--cream);font-weight:600;}
+        .highlight-text{border-left:3px solid var(--gold);padding-left:20px;margin:28px 0;font-style:italic;color:var(--cream);font-size:1.05rem;line-height:1.85;}
 
+        .owner-card{background:var(--glass);border:1px solid var(--gold-border);border-radius:20px;padding:32px;margin-top:35px;position:relative;overflow:hidden;transition:var(--transition);}
+        .owner-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-gold);}
+        .owner-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold),var(--light-purple),transparent);}
+        .owner-card-inner{display:flex;gap:20px;align-items:center;}
+        .owner-avatar{width:70px;height:70px;flex-shrink:0;border-radius:16px;background:linear-gradient(135deg,var(--gold-dim),var(--glass));border:2px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--gold);overflow:hidden;}
+        .owner-avatar img{width:100%;height:100%;object-fit:cover;}
+        .owner-info h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;margin-bottom:4px;}
+        .owner-info .owner-role{font-size:0.82rem;color:var(--gold);font-weight:600;margin-bottom:8px;}
+        .owner-info p{color:var(--cream-dim);font-size:0.88rem;line-height:1.7;}
+
+        .story-nums{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
+        .num-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;padding:28px 20px;text-align:center;transition:var(--transition);position:relative;overflow:hidden;}
+        .num-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.4s;}
+        .num-card:hover{border-color:var(--gold-border);transform:translateY(-5px);box-shadow:0 14px 40px rgba(212,175,55,0.16);}
+        .num-card:hover::after{opacity:1;}
+        .num-n{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px;}
+        .num-l{font-size:0.8rem;color:var(--cream-dim);}
+
+        /* STORE PHOTO */
+        .store-photo{border-radius:20px;overflow:hidden;margin-bottom:22px;border:1px solid var(--glass-border);position:relative;height:220px;transition:var(--transition);}
+        .store-photo:hover{border-color:var(--gold-border);box-shadow:var(--shadow-gold);}
+        .store-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);}
+        .store-photo:hover img{transform:scale(1.05);}
+        .store-photo-badge{position:absolute;top:14px;left:14px;background:rgba(13,13,26,0.85);backdrop-filter:blur(10px);border:1px solid var(--gold-border);border-radius:8px;padding:6px 14px;font-size:0.72rem;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;z-index:2;}
+
+        .reg-panel{background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;padding:26px 28px;transition:var(--transition);}
+        .reg-panel:hover{border-color:var(--gold-border);}
+        .reg-panel h5{font-size:0.7rem;font-weight:600;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+        .reg-panel h5 i{font-size:0.9rem;}
+        .rrow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--glass-border);font-size:0.87rem;transition:var(--transition);}
+        .rrow:last-child{border-bottom:none;padding-bottom:0;}
+        .rrow:hover{padding-left:6px;}
+        .rrow-l{color:var(--cream-dim);}
+        .rrow-v{color:var(--cream);font-weight:500;font-size:0.83rem;}
+
+        /* ═══════════════ DIVIDER ═══════════════ */
+        .gold-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);position:relative;}
+        .gold-divider::after{content:'◆';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold-border);font-size:0.6rem;background:var(--dark-mid);padding:0 14px;}
+
+        /* ═══════════════ TIMELINE ═══════════════ */
+        .timeline{position:relative;margin-top:60px;padding-left:50px;}
+        .timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--light-purple),transparent);border-radius:2px;}
+        .tl-item{position:relative;margin-bottom:50px;padding-left:30px;}
+        .tl-item:last-child{margin-bottom:0;}
+        .tl-dot{position:absolute;left:-41px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--dark-mid);border:3px solid var(--gold);z-index:2;transition:var(--transition);}
+        .tl-item:hover .tl-dot{background:var(--gold);box-shadow:0 0 15px rgba(212,175,55,0.5);animation:pulse 2s infinite;}
+        .tl-year{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);margin-bottom:6px;}
+        .tl-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--cream);margin-bottom:5px;}
+        .tl-desc{color:var(--cream-dim);font-size:0.9rem;line-height:1.75;max-width:480px;}
+
+        /* ═══════════════ DIVISIONS ═══════════════ */
+        .div-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:58px;}
+        .div-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:26px;padding:46px;position:relative;overflow:hidden;transition:var(--transition);}
+        .div-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.4s;}
+        .div-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(212,175,55,0.04),transparent 60%);opacity:0;transition:opacity 0.4s;}
+        .div-card:hover{border-color:var(--gold-border);transform:translateY(-6px);box-shadow:var(--shadow-deep);}
+        .div-card:hover::before,
+        .div-card:hover::after{opacity:1;}
+
+        .div-header{display:flex;align-items:center;gap:20px;margin-bottom:26px;}
+        .div-ico-w{width:66px;height:66px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;color:var(--gold);transition:var(--transition);flex-shrink:0;}
+        .div-card:hover .div-ico-w{background:linear-gradient(135deg,var(--gold),#A07910);border-color:transparent;color:var(--dark);transform:scale(1.08) rotate(-3deg);box-shadow:0 8px 30px rgba(212,175,55,0.4);}
+        .div-card h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;}
+        .div-sub{font-size:0.85rem;color:var(--gold);font-weight:500;margin-top:3px;}
+
+        .div-photo{width:100%;height:180px;border-radius:16px;overflow:hidden;margin-bottom:26px;border:1px solid var(--glass-border);position:relative;}
+        .div-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out);}
+        .div-card:hover .div-photo img{transform:scale(1.06);}
+        .div-photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(13,13,26,0.7) 100%);}
+
+        .div-feats{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:32px;}
+        .div-feats li{display:flex;align-items:center;gap:13px;font-size:0.9rem;color:var(--cream-dim);transition:var(--transition);}
+        .div-feats li:hover{color:var(--cream);transform:translateX(4px);}
+        .div-feats li i{width:30px;height:30px;background:var(--gold-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:0.72rem;flex-shrink:0;transition:var(--transition);}
+        .div-feats li:hover i{background:linear-gradient(135deg,var(--gold),#A07910);color:var(--dark);}
+
+        .spec-block{background:rgba(212,175,55,0.06);border:1px solid var(--gold-border);border-radius:14px;padding:18px 22px;display:flex;gap:16px;align-items:center;}
+        .spec-avatar{width:52px;height:52px;border-radius:14px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);flex-shrink:0;overflow:hidden;}
+        .spec-avatar img{width:100%;height:100%;object-fit:cover;}
+        .spec-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--gold);margin-bottom:2px;}
+        .spec-block p{font-size:0.84rem;color:var(--cream-dim);line-height:1.6;}
+
+        /* ═══════════════ VALUES ═══════════════ */
+        .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:55px;}
+        .value-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:22px;padding:38px 28px;text-align:center;transition:var(--transition);position:relative;overflow:hidden;}
+        .value-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:2px 2px 0 0;transition:width 0.4s;}
+        .value-card:hover{border-color:var(--gold-border);transform:translateY(-6px);box-shadow:var(--shadow-deep);}
+        .value-card:hover::after{width:60%;}
+        .value-ico{width:70px;height:70px;margin:0 auto 20px;border-radius:20px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:var(--gold);transition:var(--transition);}
+        .value-card:hover .value-ico{background:linear-gradient(135deg,var(--gold),#A07910);color:var(--dark);border-color:transparent;transform:scale(1.1) rotate(-5deg);box-shadow:0 8px 28px rgba(212,175,55,0.35);}
+        .value-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;margin-bottom:12px;}
+        .value-card p{color:var(--cream-dim);font-size:0.9rem;line-height:1.75;}
+
+        /* ═══════════════ WHY CHOOSE ═══════════════ */
+        .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px;}
+        .why-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:22px;padding:36px 24px;text-align:center;transition:var(--transition);position:relative;overflow:hidden;}
+        .why-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:3px;background:var(--gold);border-radius:2px 2px 0 0;transition:width 0.4s;}
+        .why-card:hover{border-color:var(--gold-border);transform:translateY(-6px);box-shadow:var(--shadow-deep);}
+        .why-card:hover::after{width:55%;}
+        .why-ico{font-size:2.2rem;color:var(--gold);margin-bottom:18px;display:block;filter:drop-shadow(0 0 10px rgba(212,175,55,0.3));transition:transform 0.4s;}
+        .why-card:hover .why-ico{transform:scale(1.15) rotate(-5deg);}
+        .why-card h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;margin-bottom:11px;}
+        .why-card p{color:var(--cream-dim);font-size:0.88rem;line-height:1.75;}
+
+        /* ═══════════════ TESTIMONIALS ═══════════════ */
+        .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:55px;}
+        .test-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:22px;padding:34px 28px;position:relative;transition:var(--transition);}
+        .test-card:hover{border-color:var(--gold-border);transform:translateY(-4px);box-shadow:var(--shadow-deep);}
+        .test-quote{font-size:2rem;color:var(--gold);opacity:0.4;margin-bottom:12px;line-height:1;}
+        .test-text{color:var(--cream-dim);font-size:0.92rem;line-height:1.8;margin-bottom:22px;font-style:italic;}
+        .test-author{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid var(--glass-border);}
+        .test-avatar{width:44px;height:44px;border-radius:12px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700;font-size:1rem;}
+        .test-name{font-weight:600;font-size:0.92rem;color:var(--cream);}
+        .test-role{font-size:0.78rem;color:var(--cream-dim);margin-top:2px;}
+        .test-stars{display:flex;gap:3px;margin-bottom:14px;}
+        .test-stars i{color:var(--gold);font-size:0.78rem;}
+
+        /* ═══════════════ MAP ═══════════════ */
+        .map-section{padding:0 60px 100px;}
+        .map-wrap{border-radius:24px;overflow:hidden;border:1px solid var(--gold-border);height:350px;position:relative;}
+        .map-wrap iframe{width:100%;height:100%;border:none;filter:brightness(0.7) contrast(1.1) saturate(0.3);transition:filter 0.4s;}
+        .map-wrap:hover iframe{filter:brightness(0.8) contrast(1) saturate(0.5);}
+        .map-overlay{position:absolute;top:20px;left:20px;background:rgba(13,13,26,0.92);backdrop-filter:blur(16px);border:1px solid var(--gold-border);border-radius:16px;padding:22px 26px;z-index:2;max-width:300px;}
+        .map-overlay h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:6px;}
+        .map-overlay p{font-size:0.84rem;color:var(--cream-dim);line-height:1.65;}
+        .map-overlay a{display:inline-flex;align-items:center;gap:8px;margin-top:12px;color:var(--gold);font-size:0.84rem;font-weight:600;text-decoration:none;transition:var(--transition);}
+        .map-overlay a:hover{transform:translateX(4px);}
+
+        /* ═══════════════ CONTACT ═══════════════ */
+        .contact-wrap{padding:95px 60px;background:rgba(0,0,0,0.2);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);position:relative;overflow:hidden;}
+        .contact-wrap::before{content:'';position:absolute;top:0;right:0;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.05),transparent 70%);pointer-events:none;}
+        .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+        .c-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:28px 24px;display:flex;align-items:flex-start;gap:16px;transition:var(--transition);}
+        .c-card:hover{border-color:var(--gold-border);background:var(--glass-mid);transform:translateY(-3px);}
+        .c-ico{width:46px;height:46px;flex-shrink:0;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem;transition:var(--transition);}
+        .c-card:hover .c-ico{background:linear-gradient(135deg,var(--gold),#A07910);color:var(--dark);border-color:transparent;}
+        .c-card h4{font-size:0.72rem;font-weight:600;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+        .c-card p{color:var(--cream-dim);font-size:0.9rem;line-height:1.75;}
+        .c-card a{color:var(--cream-dim);text-decoration:none;display:block;font-size:0.9rem;transition:color 0.3s;}
+        .c-card a:hover{color:var(--gold);}
+
+        /* ═══════════════ FOOTER ═══════════════ */
+        footer{background:rgba(8,8,18,0.95);border-top:1px solid var(--glass-border);padding:68px 60px 30px;position:relative;}
+        footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1.3fr;gap:56px;margin-bottom:48px;}
+        .f-logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;color:var(--cream);margin-bottom:12px;}
+        .f-logo span{color:var(--gold);}
+        .f-desc{color:var(--cream-dim);font-size:0.9rem;line-height:1.85;max-width:320px;}
+        .f-socs{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+        .fsoc{width:36px;height:36px;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--cream-dim);font-size:0.9rem;text-decoration:none;transition:var(--transition);}
+        .fsoc:hover{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold);transform:translateY(-3px);}
+        .f-col h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--cream);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--glass-border);}
+        .f-links{display:flex;flex-direction:column;gap:9px;}
+        .f-links a{color:var(--cream-dim);text-decoration:none;font-size:0.89rem;transition:all 0.3s;display:flex;align-items:center;gap:8px;}
+        .f-links a::before{content:'';display:block;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
+        .f-links a:hover{color:var(--gold);transform:translateX(4px);}
+        .f-links a:hover::before{width:12px;}
+        .f-info{display:flex;flex-direction:column;gap:10px;}
+        .fi{display:flex;gap:10px;font-size:0.87rem;color:var(--cream-dim);align-items:flex-start;}
+        .fi i{color:var(--gold);font-size:0.8rem;margin-top:4px;flex-shrink:0;}
+        .fi strong{color:var(--cream);}
+        .fi a{color:var(--cream-dim);text-decoration:none;transition:color 0.3s;}
+        .fi a:hover{color:var(--gold);}
+        .footer-bottom{border-top:1px solid var(--glass-border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+        .footer-bottom p{color:var(--cream-dim);font-size:0.84rem;}
+
+        /* ═══════════════ REVEAL ═══════════════ */
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        .reveal-left{opacity:0;transform:translateX(-30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+        .reveal-left.visible{opacity:1;transform:translateX(0);}
+        .reveal-right{opacity:0;transform:translateX(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+        .reveal-right.visible{opacity:1;transform:translateX(0);}
+        .reveal-scale{opacity:0;transform:scale(0.92);transition:opacity 0.7s ease,transform 0.7s ease;}
+        .reveal-scale.visible{opacity:1;transform:scale(1);}
+        .d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}.d4{transition-delay:0.4s;}.d5{transition-delay:0.5s;}
+
+        /* ═══════════════ MOBILE NAV ═══════════════ */
+        .nav-overlay{display:none;position:fixed;inset:0;background:rgba(8,8,20,0.98);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:30px;backdrop-filter:blur(20px);}
+        .nav-overlay.open{display:flex;}
+        .nav-overlay a{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--cream);text-decoration:none;transition:all 0.3s;position:relative;}
+        .nav-overlay a:hover{color:var(--gold);transform:translateX(8px);}
+        .nav-close-btn{position:absolute;top:26px;right:6%;font-size:1.8rem;color:var(--cream);cursor:pointer;transition:var(--transition);}
+        .nav-close-btn:hover{color:var(--gold);transform:rotate(90deg);}
+
+        /* ═══════════════ SCROLL PROGRESS ═══════════════ */
+        .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));z-index:10000;width:0%;transition:width 0.1s linear;}
+
+        /* ═══════════════ BACK TO TOP ═══════════════ */
+        .back-to-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;background:linear-gradient(135deg,var(--gold),#A07910);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--dark);font-size:1.1rem;text-decoration:none;z-index:999;opacity:0;transform:translateY(20px);transition:var(--transition);box-shadow:0 6px 24px rgba(212,175,55,0.35);cursor:pointer;border:none;}
+        .back-to-top.visible{opacity:1;transform:translateY(0);}
+        .back-to-top:hover{transform:translateY(-4px);box-shadow:0 10px 35px rgba(212,175,55,0.5);}
+
+        /* ═══════════════ RESPONSIVE ═══════════════ */
+        @media(max-width:1200px){
+            .why-grid{grid-template-columns:repeat(2,1fr);}
+            .testimonials-grid{grid-template-columns:repeat(2,1fr);}
+            .values-grid{grid-template-columns:repeat(2,1fr);}
+            .photo-grid{grid-template-rows:repeat(3,140px);}
+        }
+        @media(max-width:960px){
+            :root{--sidebar-w:270px;}
+            .photo-grid{grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,130px);}
+            .p1{grid-column:1/4;grid-row:1/3;}
+            .p2{grid-column:4/7;grid-row:1/2;}
+            .p3{grid-column:4/7;grid-row:2/3;}
+            .p4{grid-column:1/4;grid-row:3/5;}
+            .p5{grid-column:4/7;grid-row:3/4;}
+            .p6{grid-column:4/7;grid-row:4/5;}
+            .p7{grid-column:1/3;grid-row:5/6;}
+            .p8{grid-column:3/7;grid-row:5/6;}
+        }
+        @media(max-width:840px){
+            .sidebar{display:none;}
+            .hero,.section,.contact-wrap,.photo-showcase,.map-section,footer{padding-left:24px;padding-right:24px;}
+            .story-grid,.div-grid{grid-template-columns:1fr;gap:40px;}
+            .contact-cards{grid-template-columns:1fr;}
+            .footer-grid{grid-template-columns:1fr;gap:36px;}
+            nav ul{display:none;}
+            .mobile-menu{display:block;}
+            .hero{min-height:80vh;padding-top:90px;}
+            .hero-img-area{display:none;}
+            .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+            .p1,.p2,.p3,.p4,.p5,.p6,.p7,.p8{grid-column:auto;grid-row:auto;}
+            .p1{grid-column:1/3;height:220px;}
+            .photo-item{height:180px;}
+            .testimonials-grid{grid-template-columns:1fr;}
+        }
+        @media(max-width:600px){
+            .why-grid,.values-grid{grid-template-columns:1fr;}
+            .story-nums{grid-template-columns:1fr 1fr;}
+            .hero-stats{gap:22px;flex-wrap:wrap;}
+            .hero-cta-row{flex-direction:column;}
+            .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+            .map-wrap{height:280px;}
+            .owner-card-inner{flex-direction:column;text-align:center;}
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+<div class="ambient"></div>
+<div class="ambient-orb"></div>
+<canvas id="particles"></canvas>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- LEFT -->
+<!-- HEADER -->
+<header id="header">
+    <div class="header-inner">
+        <a class="logo" href="index.html">
+            <div class="logo-icon"><i class="fas fa-mobile-alt"></i></div>
+            <span class="logo-text">Afsar <span>Mobitech</span></span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mobiles.html">Mobiles</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="repair.html">Repairs</a></li>
+                <li><a href="csc.html">CSC Services</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-menu" id="menuBtn"><i class="fas fa-bars"></i></div>
+    </div>
+</header>
 
-<div class="left">
-
-<h1>About <span>Afsar Mobitech</span></h1>
-
-<p>
-Afsar Mobitech is a trusted mobile and digital service center in Vadodara.  
-We provide complete solutions including mobile repair, accessories, and government services like Aadhaar, PAN, eKYC and more.
-</p>
-
-<p>
-We focus on fast service, genuine parts, and customer satisfaction.  
-Our goal is to provide reliable digital and mobile solutions under one roof.
-</p>
-
+<!-- MOBILE NAV -->
+<div class="nav-overlay" id="navOverlay">
+    <span class="nav-close-btn" id="navClose"><i class="fas fa-times"></i></span>
+    <a href="index.html">Home</a>
+    <a href="mobiles.html">Mobiles</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="repair.html">Repairs</a>
+    <a href="csc.html">CSC Services</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
 </div>
 
-<!-- RIGHT SIDE PANEL -->
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-<div class="right">
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
 
-<div class="box">
-<h3>Business Info</h3>
-<p><b>AFSAR MOBITECH</b></p>
-<p>Plot No. 145, Tower A, GF-7, Bharat Complex Por GIDC,<br>
-Raman Gamdi, Por Taluka: Vadodara,<br>
-Vadodara, Gujarat - 391243</p>
+    <!-- ═════ SIDEBAR ═════ -->
+    <aside class="sidebar">
+        <div class="sb-brand">
+            <div class="sb-logo-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h2>Afsar <span>Mobitech</span></h2>
+            <p>Premium Mobile &amp; Digital Centre</p>
+        </div>
+        <div class="sb-block">
+            <div class="sb-title">Contact</div>
+            <div class="irow">
+                <div class="iico"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="itxt">
+                    <div class="lbl">Address</div>
+                    <p>Plot No. 145, Tower A, GF-7<br>Bharat Complex, Por GIDC<br>Raman Gamdi, Por Taluka<br>Vadodara, Gujarat 391243</p>
+                </div>
+            </div>
+            <div class="irow">
+                <div class="iico"><i class="fas fa-phone"></i></div>
+                <div class="itxt">
+                    <div class="lbl">Mobile</div>
+                    <a href="tel:+918320394380">+91 83203 94380</a>
+                </div>
+            </div>
+            <div class="irow">
+                <div class="iico"><i class="fab fa-whatsapp"></i></div>
+                <div class="itxt">
+                    <div class="lbl">WhatsApp</div>
+                    <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank">Send a Message</a>
+                </div>
+            </div>
+            <div class="irow">
+                <div class="iico"><i class="fas fa-clock"></i></div>
+                <div class="itxt">
+                    <div class="lbl">Hours</div>
+                    <p>Mon – Sat: 10 AM – 8 PM<br>Sunday: 10 AM – 2 PM</p>
+                </div>
+            </div>
+        </div>
+        <div class="sb-block">
+            <div class="sb-title">Registration</div>
+            <div class="reg-item">
+                <div class="reg-lbl">GSTIN</div>
+                <div class="reg-val">24KCVPK4570E1Z5</div>
+            </div>
+            <div class="reg-item">
+                <div class="reg-lbl">Udyam Registration</div>
+                <div class="reg-val">UDYAM-GJ-24-0044877</div>
+            </div>
+        </div>
+        <div class="sb-block">
+            <div class="sb-title">Follow Us</div>
+            <div class="social-list">
+                <a class="soc-link" href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank">
+                    <span class="sico s-wa"><i class="fab fa-whatsapp"></i></span> WhatsApp
+                </a>
+                <a class="soc-link" href="https://x.com/AfsarMobitech" target="_blank">
+                    <span class="sico s-x"><i class="fab fa-x-twitter"></i></span> X (Twitter)
+                </a>
+                <a class="soc-link" href="https://www.youtube.com/@AfsarMobitech" target="_blank">
+                    <span class="sico s-yt"><i class="fab fa-youtube"></i></span> YouTube
+                </a>
+                <a class="soc-link" href="https://www.linkedin.com/in/afsarmobitech/" target="_blank">
+                    <span class="sico s-li"><i class="fab fa-linkedin-in"></i></span> LinkedIn
+                </a>
+                <a class="soc-link" href="https://www.instagram.com/afsarmobitech/" target="_blank">
+                    <span class="sico s-ig"><i class="fab fa-instagram"></i></span> Instagram
+                </a>
+                <a class="soc-link" href="https://www.facebook.com/people/Afsar-Mobitech/61583477535849/" target="_blank">
+                    <span class="sico s-fb"><i class="fab fa-facebook-f"></i></span> Facebook
+                </a>
+            </div>
+        </div>
+    </aside>
 
-<p><b>Mobile:</b> 8320394380</p>
+    <!-- ═════ MAIN CONTENT ═════ -->
+    <div class="main-content">
 
-<p><b>GSTIN:</b> 24KCVPK4570E1Z5</p>
-<p><b>Udyam:</b> UDYAM-GJ-24-0044877</p>
-</div>
+        <!-- ═══════ HERO ═══════ -->
+        <section class="hero">
+            <div class="hero-grid-bg"></div>
+            <div class="hero-gradient"></div>
+            <div class="hero-img-area"></div>
+            <div class="hero-body">
+                <div class="hero-badge"><span class="dot"></span>Vadodara's Trusted Tech Partner</div>
+                <h1>
+                    The Story Behind<br>
+                    <span class="gold">Afsar Mobitech</span>
+                </h1>
+                <p class="hero-desc">From a single vision of honest, expert service to Vadodara's most complete mobile and digital hub — mobile sales, IC-level repairs, and government digital services, all in one place at Por GIDC.</p>
+                <div class="hero-cta-row">
+                    <a href="tel:+918320394380" class="btn-primary"><i class="fas fa-phone"></i> Call Us Now</a>
+                    <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" class="btn-secondary"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-num" data-count="8">0</div>
+                        <div class="stat-lbl">Years Experience</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-num" data-count="5000">0</div>
+                        <div class="stat-lbl">Happy Customers</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-num" data-count="4">0</div>
+                        <div class="stat-lbl">Core Services</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="box">
-<h3>Social Media</h3>
+        <!-- ═══════ PHOTO GALLERY ═══════ -->
+        <section class="photo-showcase reveal-scale">
+            <div class="photo-grid">
+                <div class="photo-item p1">
+                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&q=80" alt="Mobile Store Interior" loading="lazy">
+                    <div class="photo-caption">Our Store <span>Por GIDC, Vadodara</span></div>
+                </div>
+                <div class="photo-item p2">
+                    <img src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=600&q=80" alt="Phone Repair" loading="lazy">
+                    <div class="photo-caption">Expert Repair <span>IC-Level Service</span></div>
+                </div>
+                <div class="photo-item p3">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80" alt="Latest Smartphones" loading="lazy">
+                    <div class="photo-caption">Latest Phones <span>All Major Brands</span></div>
+                </div>
+                <div class="photo-item p4">
+                    <img src="https://images.unsplash.com/photo-1580910051074-3eb694886571?w=700&q=80" alt="Phone Accessories" loading="lazy">
+                    <div class="photo-caption">Accessories <span>Premium Collection</span></div>
+                </div>
+                <div class="photo-item p5">
+                    <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=600&q=80" alt="Customer Service" loading="lazy">
+                    <div class="photo-caption">Customer First <span>Always</span></div>
+                </div>
+                <div class="photo-item p6">
+                    <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=600&q=80" alt="Motherboard Repair" loading="lazy">
+                    <div class="photo-caption">Motherboard Work <span>Precision Repair</span></div>
+                </div>
+                <div class="photo-item p7">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&q=80" alt="Phone Display" loading="lazy">
+                    <div class="photo-caption">Display Section <span>Wide Range</span></div>
+                </div>
+                <div class="photo-item p8">
+                    <img src="https://images.unsplash.com/photo-1563203369-26f2e4a5ccf7?w=600&q=80" alt="Digital Services" loading="lazy">
+                    <div class="photo-caption">CSC Centre <span>Digital India</span></div>
+                </div>
+            </div>
+        </section>
 
-<div class="links">
+        <!-- ═══════ STORY ═══════ -->
+        <section class="section">
+            <div class="sec-label reveal">Our Story</div>
+            <h2 class="sec-title reveal d1">Built on Trust,<br><span>Grown by Service</span></h2>
+            <div class="story-grid">
+                <div>
+                    <p class="sp reveal">Afsar Mobitech began with a clear purpose: give the people of Vadodara a place they could actually trust. <strong>Honest pricing, expert hands, and no runaround.</strong> We started as a focused mobile service centre in Por GIDC and grew entirely through results and word of mouth.</p>
+                    <p class="sp reveal d1">Today we operate as a <strong>complete mobile and digital ecosystem</strong> — mobile sales, accessories, expert IC-level repairs, and a registered CSC centre for government digital services including Aadhaar, PAN, eKYC, banking, and documentation.</p>
+                    <div class="highlight-text reveal d2">
+                        "Quality, transparency, and fair pricing have been our constants. Every device we repair and every service we deliver carries that commitment forward."
+                    </div>
+                    <p class="sp reveal d3">What began as one man's vision is now a recognized name in the Por GIDC community — a place where people come not just for service, but because they know they'll be treated right.</p>
+                    <div class="owner-card reveal d4">
+                        <div class="owner-card-inner">
+                            <div class="owner-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Afsarali Khan">
+                            </div>
+                            <div class="owner-info">
+                                <h4>Afsarali Khan</h4>
+                                <div class="owner-role"><i class="fas fa-crown" style="margin-right:6px;font-size:0.72rem"></i>Founder &amp; Owner</div>
+                                <p>With years of hands-on experience across mobile retail and government digital services, Afsarali Khan leads Afsar Mobitech with a direct focus on customer satisfaction and community trust.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-right d1">
+                    <div class="store-photo">
+                        <div class="store-photo-badge"><i class="fas fa-store" style="margin-right:5px"></i> Our Store</div>
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&q=80" alt="Afsar Mobitech Store" loading="lazy">
+                    </div>
+                    <div class="story-nums">
+                        <div class="num-card">
+                            <div class="num-n">Mon-Sat</div>
+                            <div class="num-l">10 AM – 8 PM</div>
+                        </div>
+                        <div class="num-card">
+                            <div class="num-n">Sun</div>
+                            <div class="num-l">10 AM – 2 PM</div>
+                        </div>
+                        <div class="num-card">
+                            <div class="num-n">MSME</div>
+                            <div class="num-l">Udyam Registered</div>
+                        </div>
+                        <div class="num-card">
+                            <div class="num-n">GST</div>
+                            <div class="num-l">Verified Business</div>
+                        </div>
+                    </div>
+                    <div class="reg-panel">
+                        <h5><i class="fas fa-shield-alt"></i> Business Registration</h5>
+                        <div class="rrow"><span class="rrow-l">GSTIN</span><span class="rrow-v">24KCVPK4570E1Z5</span></div>
+                        <div class="rrow"><span class="rrow-l">Udyam</span><span class="rrow-v">UDYAM-GJ-24-0044877</span></div>
+                        <div class="rrow"><span class="rrow-l">Location</span><span class="rrow-v">Por GIDC, Vadodara</span></div>
+                        <div class="rrow"><span class="rrow-l">Owner</span><span class="rrow-v">Afsarali Khan</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<a href="https://wa.me/message/7DFELJHMA4OOL1">WhatsApp</a>
+        <div class="gold-divider"></div>
 
-<a href="https://x.com/AfsarMobitech">X (Twitter)</a>
+        <!-- ═══════ JOURNEY TIMELINE ═══════ -->
+        <section class="section">
+            <div style="text-align:center">
+                <div class="sec-label reveal" style="justify-content:center">Our Journey</div>
+                <h2 class="sec-title reveal d1" style="text-align:center">Milestones That <span>Define Us</span></h2>
+                <p class="sec-sub reveal d2" style="margin:0 auto">Key moments in the Afsar Mobitech journey — each one built on trust and dedication.</p>
+            </div>
+            <div class="timeline">
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-year">Foundation</div>
+                    <div class="tl-title">Afsar Mobitech Opens Its Doors</div>
+                    <div class="tl-desc">Started as a mobile repair shop in Por GIDC, Vadodara — focused on honest, quality service from day one.</div>
+                </div>
+                <div class="tl-item reveal d1">
+                    <div class="tl-dot"></div>
+                    <div class="tl-year">Growth</div>
+                    <div class="tl-title">Expanded to Mobile Sales &amp; Accessories</div>
+                    <div class="tl-desc">Added new and certified pre-owned mobile sales, plus a curated accessories collection for all major brands.</div>
+                </div>
+                <div class="tl-item reveal d2">
+                    <div class="tl-dot"></div>
+                    <div class="tl-year">Certification</div>
+                    <div class="tl-title">CSC Registration &amp; Digital Services</div>
+                    <div class="tl-desc">Became a registered CSC centre — bringing Aadhaar, PAN, eKYC, banking, and government services to the community.</div>
+                </div>
+                <div class="tl-item reveal d3">
+                    <div class="tl-dot"></div>
+                    <div class="tl-year">Recognition</div>
+                    <div class="tl-title">MSME &amp; GST Verified Business</div>
+                    <div class="tl-desc">Achieved Udyam MSME registration and full GST compliance — solidifying our position as a trusted, verified enterprise.</div>
+                </div>
+                <div class="tl-item reveal d4">
+                    <div class="tl-dot"></div>
+                    <div class="tl-year">Today</div>
+                    <div class="tl-title">5000+ Happy Customers &amp; Growing</div>
+                    <div class="tl-desc">Now Vadodara's most complete mobile and digital hub — continuing to grow through results and community trust.</div>
+                </div>
+            </div>
+        </section>
 
-<a href="https://www.youtube.com/@AfsarMobitech">YouTube</a>
+        <div class="gold-divider"></div>
 
-<a href="https://www.linkedin.com/in/afsarmobitech/">LinkedIn</a>
+        <!-- ═══════ DIVISIONS ═══════ -->
+        <section class="section">
+            <div style="text-align:center">
+                <div class="sec-label reveal" style="justify-content:center">Specialized Divisions</div>
+                <h2 class="sec-title reveal d1" style="text-align:center">Two Experts, <span>One Roof</span></h2>
+                <p class="sec-sub reveal d2" style="margin:0 auto">Each division runs independently — so you always deal with a specialist, not a generalist.</p>
+            </div>
+            <div class="div-grid">
+                <div class="div-card reveal">
+                    <div class="div-header">
+                        <div class="div-ico-w"><i class="fas fa-tools"></i></div>
+                        <div>
+                            <h3>Mobile Phone Repair</h3>
+                            <div class="div-sub">Expert IC-Level Repair</div>
+                        </div>
+                    </div>
+                    <div class="div-photo">
+                        <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=700&q=80" alt="Mobile Repair Lab" loading="lazy">
+                        <div class="div-photo-overlay"></div>
+                    </div>
+                    <ul class="div-feats">
+                        <li><i class="fas fa-microchip"></i>IC Level &amp; Motherboard Repair</li>
+                        <li><i class="fas fa-skull-crossbones"></i>Dead Phone Recovery</li>
+                        <li><i class="fas fa-tint"></i>Water Damage Repair</li>
+                        <li><i class="fas fa-battery-empty"></i>No Charge Fix</li>
+                        <li><i class="fas fa-bolt"></i>Power IC Replacement</li>
+                        <li><i class="fas fa-wrench"></i>All Major Brands</li>
+                    </ul>
+                    <div class="spec-block">
+                        <div class="spec-avatar">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80" alt="Rk Khan">
+                        </div>
+                        <div>
+                            <div class="spec-name">Rk Khan</div>
+                            <p>Repair Specialist — 8+ years IC-level experience across all major smartphone brands.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-card reveal d2">
+                    <div class="div-header">
+                        <div class="div-ico-w"><i class="fas fa-laptop-code"></i></div>
+                        <div>
+                            <h3>Government Digital Services</h3>
+                            <div class="div-sub">CSC-Registered Digital Centre</div>
+                        </div>
+                    </div>
+                    <div class="div-photo">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="Digital Services Centre" loading="lazy">
+                        <div class="div-photo-overlay"></div>
+                    </div>
+                    <ul class="div-feats">
+                        <li><i class="fas fa-id-card"></i>Aadhaar Enrolment &amp; Update</li>
+                        <li><i class="fas fa-credit-card"></i>PAN Card Services</li>
+                        <li><i class="fas fa-user-check"></i>eKYC Verification</li>
+                        <li><i class="fas fa-file-alt"></i>RTI Applications</li>
+                        <li><i class="fas fa-passport"></i>Passport Services</li>
+                        <li><i class="fas fa-university"></i>Banking &amp; Financial Services</li>
+                    </ul>
+                    <div class="spec-block">
+                        <div class="spec-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Afsarali Khan">
+                        </div>
+                        <div>
+                            <div class="spec-name">Afsarali Khan</div>
+                            <p>Digital Services Specialist — all government documentation and e-governance services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<a href="https://www.instagram.com/afsarmobitech/">Instagram</a>
+        <div class="gold-divider"></div>
 
-<a href="https://www.facebook.com/people/Afsar-Mobitech/61583477535849/">Facebook</a>
+        <!-- ═══════ VALUES ═══════ -->
+        <section class="section">
+            <div style="text-align:center">
+                <div class="sec-label reveal" style="justify-content:center">Our Values</div>
+                <h2 class="sec-title reveal d1" style="text-align:center">What We <span>Stand For</span></h2>
+                <p class="sec-sub reveal d2" style="margin:0 auto">The principles that guide every interaction, every repair, and every service we deliver.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card reveal">
+                    <div class="value-ico"><i class="fas fa-handshake"></i></div>
+                    <h3>Honesty First</h3>
+                    <p>Transparent pricing, genuine diagnostics, and honest recommendations. We tell you what your device actually needs — nothing more.</p>
+                </div>
+                <div class="value-card reveal d1">
+                    <div class="value-ico"><i class="fas fa-gem"></i></div>
+                    <h3>Quality Always</h3>
+                    <p>Premium parts, expert workmanship, and verified products. We never cut corners — because your trust is worth more than a quick profit.</p>
+                </div>
+                <div class="value-card reveal d2">
+                    <div class="value-ico"><i class="fas fa-heart"></i></div>
+                    <h3>Community Care</h3>
+                    <p>We're not just a business — we're part of the Por GIDC community. We serve our neighbours with the same care we'd want for ourselves.</p>
+                </div>
+            </div>
+        </section>
 
-</div>
-</div>
+        <div class="gold-divider"></div>
 
-</div>
+        <!-- ═══════ WHY CHOOSE US ═══════ -->
+        <section class="section">
+            <div style="text-align:center">
+                <div class="sec-label reveal" style="justify-content:center">Why Choose Us</div>
+                <h2 class="sec-title reveal d1" style="text-align:center">What Sets Us <span>Apart</span></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <i class="fas fa-award why-ico"></i>
+                    <h3>Trusted Service</h3>
+                    <p>Thousands of satisfied customers. A reputation built entirely through honest, quality work.</p>
+                </div>
+                <div class="why-card reveal d1">
+                    <i class="fas fa-bolt why-ico"></i>
+                    <h3>Fast Turnaround</h3>
+                    <p>Quick, efficient service that respects your time without cutting corners on quality.</p>
+                </div>
+                <div class="why-card reveal d2">
+                    <i class="fas fa-shield-alt why-ico"></i>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Genuine parts, verified products, and warranty-backed repairs — no compromises.</p>
+                </div>
+                <div class="why-card reveal d3">
+                    <i class="fas fa-home why-ico"></i>
+                    <h3>One-Stop Shop</h3>
+                    <p>Mobile sales, accessories, expert repair, and digital services at one address.</p>
+                </div>
+            </div>
+        </section>
 
-</div>
+        <div class="gold-divider"></div>
 
-<!-- WHATSAPP FLOAT -->
+        <!-- ═══════ TESTIMONIALS ═══════ -->
+        <section class="section">
+            <div style="text-align:center">
+                <div class="sec-label reveal" style="justify-content:center">Customer Reviews</div>
+                <h2 class="sec-title reveal d1" style="text-align:center">What People <span>Say About Us</span></h2>
+                <p class="sec-sub reveal d2" style="margin:0 auto">Real feedback from real customers — our reputation speaks for itself.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="test-card reveal">
+                    <div class="test-quote">"</div>
+                    <div class="test-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="test-text">My phone was completely dead — other shops said it's gone. Afsar Mobitech recovered it in just 2 days. Incredible work by Rk Khan. Highly recommended!</p>
+                    <div class="test-author">
+                        <div class="test-avatar">R</div>
+                        <div>
+                            <div class="test-name">Rajesh Patel</div>
+                            <div class="test-role">Local Business Owner</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card reveal d1">
+                    <div class="test-quote">"</div>
+                    <div class="test-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="test-text">Got my Aadhaar updated and bought a new phone — all in one visit. The convenience is unmatched. Fair prices and excellent service every time.</p>
+                    <div class="test-author">
+                        <div class="test-avatar">P</div>
+                        <div>
+                            <div class="test-name">Priya Sharma</div>
+                            <div class="test-role">Teacher</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card reveal d2">
+                    <div class="test-quote">"</div>
+                    <div class="test-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="test-text">Best mobile shop in Por GIDC area. Honest pricing, no fake parts. They even explained what was wrong with my phone instead of just charging me. Will always come back.</p>
+                    <div class="test-author">
+                        <div class="test-avatar">M</div>
+                        <div>
+                            <div class="test-name">Mohammad Hussain</div>
+                            <div class="test-role">Factory Worker</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<a href="https://wa.me/918320394380" class="whatsapp">
-<i class="fab fa-whatsapp"></i>
-</a>
+        <!-- ═══════ MAP ═══════ -->
+        <section class="map-section reveal-scale">
+            <div class="map-wrap">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.5!2d73.13!3d22.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE2JzQ4LjAiTiA3M8KwMDcnNDguMCJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-overlay">
+                    <h4><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:6px"></i> Find Us</h4>
+                    <p>Plot No. 145, Tower A, GF-7<br>Bharat Complex, Por GIDC<br>Vadodara, Gujarat 391243</p>
+                    <a href="https://maps.google.com/?q=Afsar+Mobitech+Por+GIDC+Vadodara" target="_blank">
+                        Get Directions <i class="fas fa-arrow-right" style="font-size:0.75rem"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
 
+        <!-- ═══════ CONTACT ═══════ -->
+        <div class="contact-wrap">
+            <div class="sec-label reveal">Visit Us</div>
+            <h2 class="sec-title reveal d1">Come See <span>the Shop</span></h2>
+            <p class="sec-sub reveal d2">Por GIDC, Raman Gamdi, Vadodara. Open six days a week.</p>
+            <div class="contact-cards">
+                <div class="c-card reveal">
+                    <div class="c-ico"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>Plot No. 145, Tower A, GF-7<br>Bharat Complex, Por GIDC<br>Raman Gamdi, Por Taluka<br>Vadodara, Gujarat 391243</p>
+                    </div>
+                </div>
+                <div class="c-card reveal d1">
+                    <div class="c-ico"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <h4>Opening Hours</h4>
+                        <p>Monday – Saturday<br>10:00 AM – 8:00 PM<br><br>Sunday<br>10:00 AM – 2:00 PM</p>
+                    </div>
+                </div>
+                <div class="c-card reveal d2">
+                    <div class="c-ico"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h4>Contact</h4>
+                        <a href="tel:+918320394380">+91 83203 94380</a>
+                        <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" style="margin-top:6px">WhatsApp Chat</a>
+                        <a href="mailto:afsarmobitech@gmail.com" style="margin-top:6px">afsarmobitech@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ FOOTER ═══════ -->
+        <footer>
+            <div class="footer-grid">
+                <div>
+                    <div class="f-logo">Afsar <span>Mobitech</span></div>
+                    <p class="f-desc">Premium mobile and digital service centre in Vadodara. Honest service, expert repairs, and complete government digital solutions — all under one roof.</p>
+                    <div class="f-socs">
+                        <a class="fsoc" href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a class="fsoc" href="https://x.com/AfsarMobitech" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                        <a class="fsoc" href="https://www.youtube.com/@AfsarMobitech" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a class="fsoc" href="https://www.linkedin.com/in/afsarmobitech/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="fsoc" href="https://www.instagram.com/afsarmobitech/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="fsoc" href="https://www.facebook.com/people/Afsar-Mobitech/61583477535849/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="f-col">
+                    <h4>Navigation</h4>
+                    <div class="f-links">
+                        <a href="index.html">Home</a>
+                        <a href="mobiles.html">Mobile Sales</a>
+                        <a href="accessories.html">Accessories</a>
+                        <a href="repair.html">Repair Services</a>
+                        <a href="csc.html">CSC Digital Services</a>
+                        <a href="about.html">About Us</a>
+                    </div>
+                </div>
+                <div class="f-col">
+                    <h4>Business Info</h4>
+                    <div class="f-info">
+                        <div class="fi"><i class="fas fa-certificate"></i><div><strong>GSTIN</strong><br>24KCVPK4570E1Z5</div></div>
+                        <div class="fi"><i class="fas fa-registered"></i><div><strong>Udyam</strong><br>UDYAM-GJ-24-0044877</div></div>
+                        <div class="fi"><i class="fas fa-map-marker-alt"></i><div>Por GIDC, Raman Gamdi<br>Vadodara – 391243</div></div>
+                        <div class="fi"><i class="fas fa-phone"></i><div><a href="tel:+918320394380">+91 83203 94380</a></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Afsar Mobitech. All Rights Reserved.</p>
+                <p style="color:rgba(248,244,233,0.3);font-size:0.79rem">Premium Mobile &amp; Digital Service Centre, Vadodara</p>
+            </div>
+        </footer>
+
+    </div><!-- /main-content -->
+</div><!-- /page-wrapper -->
+
+<script>
+    // ═══════ PARTICLE SYSTEM ═══════
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+    resizeCanvas();
+    window.addEventListener('resize',resizeCanvas);
+
+    class Particle{
+        constructor(){this.reset();}
+        reset(){
+            this.x=Math.random()*canvas.width;
+            this.y=Math.random()*canvas.height;
+            this.size=Math.random()*1.5+0.3;
+            this.speedX=(Math.random()-0.5)*0.3;
+            this.speedY=(Math.random()-0.5)*0.3;
+            this.opacity=Math.random()*0.4+0.1;
+            this.pulse=Math.random()*Math.PI*2;
+        }
+        update(){
+            this.x+=this.speedX;this.y+=this.speedY;
+            this.pulse+=0.015;
+            if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();
+        }
+        draw(){
+            const o=this.opacity*(0.6+Math.sin(this.pulse)*0.4);
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+            ctx.fillStyle=`rgba(212,175,55,${o})`;
+            ctx.fill();
+        }
+    }
+    for(let i=0;i<60;i++)particles.push(new Particle());
+    function animateParticles(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach(p=>{p.update();p.draw();});
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ═══════ SCROLL PROGRESS ═══════
+    const scrollProgress=document.getElementById('scrollProgress');
+    window.addEventListener('scroll',()=>{
+        const max=document.documentElement.scrollHeight-window.innerHeight;
+        const pct=(window.scrollY/max)*100;
+        scrollProgress.style.width=pct+'%';
+    });
+
+    // ═══════ HEADER SCROLL ═══════
+    const header=document.getElementById('header');
+    window.addEventListener('scroll',()=>{
+        header.classList.toggle('scrolled',window.scrollY>70);
+    });
+
+    // ═══════ BACK TO TOP ═══════
+    const backToTop=document.getElementById('backToTop');
+    window.addEventListener('scroll',()=>{
+        backToTop.classList.toggle('visible',window.scrollY>500);
+    });
+    backToTop.addEventListener('click',()=>{
+        window.scrollTo({top:0,behavior:'smooth'});
+    });
+
+    // ═══════ MOBILE NAV ═══════
+    document.getElementById('menuBtn').addEventListener('click',()=>{
+        document.getElementById('navOverlay').classList.add('open');
+        document.body.style.overflow='hidden';
+    });
+    document.getElementById('navClose').addEventListener('click',()=>{
+        document.getElementById('navOverlay').classList.remove('open');
+        document.body.style.overflow='';
+    });
+    document.querySelectorAll('#navOverlay a').forEach(a=>{
+        a.addEventListener('click',()=>{
+            document.getElementById('navOverlay').classList.remove('open');
+            document.body.style.overflow='';
+        });
+    });
+
+    // ═══════ SCROLL REVEAL ═══════
+    const observer=new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+            if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}
+        });
+    },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>observer.observe(el));
+
+    // ═══════ COUNTER ANIMATION ═══════
+    function animateCount(el){
+        const target=parseInt(el.dataset.count);
+        const duration=2000;
+        const step=target/(duration/16);
+        let current=0;
+        const suffix=target>=1000?'+':target<=9?'':'+';
+        const t=setInterval(()=>{
+            current+=step;
+            if(current>=target){
+                clearInterval(t);
+                el.textContent=target.toLocaleString()+suffix;
+            }else{
+                el.textContent=Math.floor(current).toLocaleString();
+            }
+        },16);
+    }
+    const cObs=new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target);cObs.unobserve(e.target);}});
+    },{threshold:0.5});
+    document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+
+    // ═══════ SMOOTH IMAGE LOADING ═══════
+    document.querySelectorAll('img').forEach(img=>{
+        img.style.opacity='0';
+        img.style.transition='opacity 0.6s ease';
+        if(img.complete){img.style.opacity='1';}
+        else{img.addEventListener('load',()=>{img.style.opacity='1';});}
+        img.addEventListener('error',()=>{
+            img.style.opacity='1';
+            img.parentElement.style.background='linear-gradient(135deg,var(--glass),var(--gold-dim))';
+        });
+    });
+
+    // ═══════ PARALLAX ON HERO ═══════
+    window.addEventListener('scroll',()=>{
+        const hero=document.querySelector('.hero-body');
+        if(hero&&window.scrollY<800){
+            hero.style.transform=`translateY(${window.scrollY*0.15}px)`;
+            hero.style.opacity=1-(window.scrollY/900);
+        }
+    });
+</script>
 </body>
 </html>
