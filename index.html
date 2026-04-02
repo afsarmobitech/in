@@ -1,81 +1,765 @@
-        <!-- HERO -->
-        <section style="height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#0f172a,#1e3a8a); color:#fff; text-align:center;">
-            <div style="perspective:1000px;">
-                
-                <h1 style="font-size:52px;font-weight:900;transform: rotateX(20deg) rotateY(-10deg);text-shadow: 0 15px 30px rgba(0,0,0,0.6);">
-                    AFSAR MOBITECH
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Afsar Mobitech | CSC Centre &amp; Mobile Expert | Vadodara</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+
+        /* 3D Card */
+        .card-3d {
+            perspective: 1200px;
+        }
+        .card-3d-inner {
+            transition: transform 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .card-3d:hover .card-3d-inner {
+            transform: rotateY(8deg) rotateX(5deg) scale(1.03);
+        }
+
+        /* Hero 3D Text */
+        .hero-3d-text {
+            transform-style: preserve-3d;
+            animation: float3d 6s ease-in-out infinite;
+        }
+        @keyframes float3d {
+            0%, 100% { transform: rotateX(12deg) rotateY(-8deg) translateZ(0); }
+            25% { transform: rotateX(8deg) rotateY(5deg) translateZ(20px); }
+            50% { transform: rotateX(-5deg) rotateY(10deg) translateZ(40px); }
+            75% { transform: rotateX(6deg) rotateY(-6deg) translateZ(15px); }
+        }
+
+        /* Glow pulse */
+        .glow-pulse {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(34,197,94,0.4), 0 0 60px rgba(34,197,94,0.1); }
+            50% { box-shadow: 0 0 40px rgba(34,197,94,0.7), 0 0 100px rgba(34,197,94,0.3); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat linear infinite;
+            opacity: 0.15;
+        }
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Service icon 3D hover */
+        .service-icon-3d {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+        .service-icon-3d:hover {
+            transform: translateY(-12px) rotateX(10deg) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navbar */
+        .navbar {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        /* 3D Phone mockup */
+        .phone-3d {
+            transform-style: preserve-3d;
+            animation: phoneRotate 8s ease-in-out infinite;
+        }
+        @keyframes phoneRotate {
+            0%, 100% { transform: rotateY(-15deg) rotateX(5deg); }
+            50% { transform: rotateY(15deg) rotateX(-5deg); }
+        }
+
+        /* Typing effect */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Stats counter */
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+        .stat-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+            border-color: rgba(59,130,246,0.5);
+        }
+
+        /* Ripple button */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-ripple::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.6s, opacity 0.6s;
+        }
+        .btn-ripple:hover::after {
+            transform: scale(2.5);
+            opacity: 1;
+        }
+
+        /* Marquee */
+        .marquee {
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Social icon hover */
+        .social-icon {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .social-icon:hover {
+            transform: translateY(-8px) scale(1.15);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+    <!-- NAVBAR -->
+    <nav class="navbar fixed top-0 w-full z-50 bg-transparent px-4 md:px-8 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-black text-lg shadow-lg shadow-blue-500/30">A</div>
+                <span class="text-xl font-bold tracking-tight">AFSAR MOBITECH</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#services" class="hover:text-white transition">Services</a>
+                <a href="#mobile" class="hover:text-white transition">Mobile</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
+            <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" class="btn-ripple bg-green-500 hover:bg-green-400 text-white text-sm font-bold px-5 py-2.5 rounded-full transition shadow-lg shadow-green-500/30">
+                WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #1e3a8a 100%);">
+        <!-- Particles -->
+        <div id="particles" class="absolute inset-0 overflow-hidden"></div>
+
+        <!-- Grid overlay -->
+        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+        <!-- Gradient orbs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto" style="perspective: 1200px;">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8 text-sm">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="text-slate-300">CSC Authorized Centre | GSTIN Registered</span>
+            </div>
+
+            <!-- 3D Heading -->
+            <div class="hero-3d-text">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight" style="text-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 80px rgba(59,130,246,0.2);">
+                    AFSAR<br>
+                    <span class="gradient-text">MOBITECH</span>
                 </h1>
+            </div>
 
-                <p style="margin-top:20px;font-size:20px;color:#e2e8f0;">
-                    CSC Services | PAN Card | Aadhaar | Banking | Bill Payment <br/>
-                    Mobile Repair | Mobile Sales | Accessories
-                </p>
+            <p class="mt-6 text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                Your One-Stop Destination for <strong class="text-white">CSC Digital Services</strong>, 
+                <strong class="text-white">Mobile Repair</strong> &amp; <strong class="text-white">Sales</strong> in Vadodara
+            </p>
 
-                <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" style="display:inline-block;margin-top:30px;padding:14px 35px;background:#22c55e;color:#fff;font-weight:700;border-radius:30px;text-decoration:none;">
+            <!-- Service tags -->
+            <div class="flex flex-wrap justify-center gap-3 mt-8">
+                <span class="bg-blue-500/20 border border-blue-500/30 text-blue-200 text-sm px-4 py-1.5 rounded-full">PAN Card</span>
+                <span class="bg-purple-500/20 border border-purple-500/30 text-purple-200 text-sm px-4 py-1.5 rounded-full">Aadhaar</span>
+                <span class="bg-green-500/20 border border-green-500/30 text-green-200 text-sm px-4 py-1.5 rounded-full">Banking</span>
+                <span class="bg-orange-500/20 border border-orange-500/30 text-orange-200 text-sm px-4 py-1.5 rounded-full">Bill Payment</span>
+                <span class="bg-pink-500/20 border border-pink-500/30 text-pink-200 text-sm px-4 py-1.5 rounded-full">Mobile Repair</span>
+                <span class="bg-cyan-500/20 border border-cyan-500/30 text-cyan-200 text-sm px-4 py-1.5 rounded-full">Accessories</span>
+            </div>
+
+            <!-- CTA -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" class="btn-ripple glow-pulse inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-full text-lg transition shadow-2xl shadow-green-500/30">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     Contact on WhatsApp
                 </a>
+                <a href="tel:8320394380" class="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold px-8 py-4 rounded-full text-lg transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg>
+                    Call Now
+                </a>
             </div>
-        </section>
+        </div>
 
-        <!-- SERVICES -->
-        <section style="padding:60px 20px;text-align:center;">
-            <h2 style="font-size:36px;font-weight:800;">Our Services</h2>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 text-sm">
+            <span>Scroll Down</span>
+            <div class="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
 
-            <p>All Digital & Government Services Available</p>
+    <!-- STATS BAR -->
+    <section class="relative -mt-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 py-1">
+        <div class="overflow-hidden whitespace-nowrap">
+            <div class="marquee inline-block text-sm font-medium text-white/90">
+                PAN Card Services &bull; Aadhaar Update &bull; Money Transfer &bull; AEPS Banking &bull; Mobile Repair &bull; Screen Replacement &bull; Battery Change &bull; Software Update &bull; Bill Payment &bull; Insurance &bull; Ticket Booking &bull; CSC Services &bull; New Phones &bull; Accessories &bull;
+            </div>
+        </div>
+    </section>
 
-            <p style="margin-top:20px;">
-                PAN Card | Aadhaar Services | Online Forms | Bill Payments <br/>
-                Banking (AEPS, Money Transfer) | Insurance | Ticket Booking | CSC Services
-            </p>
-        </section>
+    <!-- STATS -->
+    <section class="bg-slate-950 py-16 px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="stat-card rounded-2xl p-6 text-center">
+                <div class="text-3xl md:text-4xl font-black text-blue-400" data-count="5000">0+</div>
+                <div class="text-sm text-slate-400 mt-2">Happy Customers</div>
+            </div>
+            <div class="stat-card rounded-2xl p-6 text-center">
+                <div class="text-3xl md:text-4xl font-black text-green-400" data-count="15">0+</div>
+                <div class="text-sm text-slate-400 mt-2">Services Available</div>
+            </div>
+            <div class="stat-card rounded-2xl p-6 text-center">
+                <div class="text-3xl md:text-4xl font-black text-purple-400" data-count="1000">0+</div>
+                <div class="text-sm text-slate-400 mt-2">Phones Repaired</div>
+            </div>
+            <div class="stat-card rounded-2xl p-6 text-center">
+                <div class="text-3xl md:text-4xl font-black text-orange-400">4.9</div>
+                <div class="text-sm text-slate-400 mt-2">Customer Rating</div>
+            </div>
+        </div>
+    </section>
 
-        <!-- MOBILE -->
-        <section style="padding:60px 20px;background:#f1f5f9;text-align:center;">
-            <h2 style="font-size:36px;font-weight:800;">Mobile Services</h2>
+    <!-- SERVICES -->
+    <section id="services" class="bg-slate-950 py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center reveal">
+                <span class="inline-block bg-blue-500/10 text-blue-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-blue-500/20 mb-4">OUR SERVICES</span>
+                <h2 class="text-4xl md:text-5xl font-black">
+                    All Digital &amp; Government<br>
+                    <span class="gradient-text">Services Available</span>
+                </h2>
+                <p class="text-slate-400 mt-4 max-w-xl mx-auto">Fast, accurate, and transparent digital services at your doorstep. CSC authorized centre for all your needs.</p>
+            </div>
 
-            <p style="margin-top:20px;">
-                Mobile Repair (Screen, Battery, Software, Charging Issue) <br/>
-                New & Refurbished Phones | All Accessories Available
-            </p>
-        </section>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+                <!-- Service 1 -->
+                <div class="card-3d reveal">
+                    <div class="card-3d-inner bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 h-full">
+                        <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-2xl mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">PAN Card Services</h3>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">New PAN card, corrections, reprints, and PAN-Aadhaar linking. Fast processing with instant acknowledgment.</p>
+                    </div>
+                </div>
 
-        <!-- ABOUT -->
-        <section style="padding:60px 20px;text-align:center;">
-            <h2 style="font-size:36px;font-weight:800;">About Us</h2>
+                <!-- Service 2 -->
+                <div class="card-3d reveal" style="transition-delay: 0.1s;">
+                    <div class="card-3d-inner bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 h-full">
+                        <div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-2xl mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Aadhaar Services</h3>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">Aadhaar enrollment, update, correction, mobile linking, address change and biometric update services.</p>
+                    </div>
+                </div>
 
-            <p style="max-width:700px;margin:auto;margin-top:20px;">
-                AFSAR MOBITECH is a trusted CSC authorized center providing fast, accurate and transparent digital services along with mobile repair and sales. 
-                Customer satisfaction and reliability are our top priority.
-            </p>
-        </section>
+                <!-- Service 3 -->
+                <div class="card-3d reveal" style="transition-delay: 0.2s;">
+                    <div class="card-3d-inner bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 h-full">
+                        <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center text-2xl mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Banking (AEPS)</h3>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">Aadhaar Enabled Payment System, money transfer, cash withdrawal, balance inquiry, and mini statements.</p>
+                    </div>
+                </div>
 
-        <!-- CONTACT -->
-        <section style="padding:60px 20px;background:#0f172a;color:#fff;text-align:center;">
-            <h2 style="font-size:36px;font-weight:800;">Contact Us</h2>
+                <!-- Service 4 -->
+                <div class="card-3d reveal" style="transition-delay: 0.3s;">
+                    <div class="card-3d-inner bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 h-full">
+                        <div class="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-2xl mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Online Forms</h3>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">Government form filling, exam applications, scholarship forms, passport applications, and more.</p>
+                    </div>
+                </div>
 
-            <p style="margin-top:20px;">
-                📍 Plot No. 145, Tower A, GF-7, Bharat Complex Por GIDC, Raman Gamdi, Por Taluka: Vadodara, Gujarat 391243 <br/><br/>
-                📞 8320394380 <br/><br/>
-                GSTIN: 24KCVPK4570E1Z5 <br/>
-                UDYAM: UDYAM-GJ-24-0044877 <br/>
-                GJCSCBC
-            </p>
-        </section>
+                <!-- Service 5 -->
+                <div class="card-3d reveal" style="transition-delay: 0.4s;">
+                    <div class="card-3d-inner bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 h-full">
+                        <div class="w-14 h-14 bg-yellow-500/20 rounded-xl flex items-center justify-center text-2xl mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Bill Payments</h3>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">Electricity, water, gas, DTH recharge, mobile recharge, insurance premium, and all utility payments.</p>
+                    </div>
+                </div>
 
-        <!-- SOCIAL MEDIA -->
-        <section style="padding:40px;text-align:center;">
-            <h3>Follow Us</h3>
+                <!-- Service 6 -->
+                <div class="card-3d reveal" style="transition-delay: 0.5s;">
+                    <div class="card-3d-inner bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 rounded-2xl p-6 h-full">
+                        <div class="w-14 h-14 bg-pink-500/20 rounded-xl flex items-center justify-center text-2xl mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">CSC Services</h3>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">Complete CSC centre services including insurance, ticket booking, certificate downloads, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <p style="margin-top:15px;">
-                <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank">WhatsApp</a> |
-                <a href="https://x.com/AfsarMobitech" target="_blank">X</a> |
-                <a href="https://www.youtube.com/@AfsarMobitech" target="_blank">YouTube</a> |
-                <a href="https://www.linkedin.com/in/afsarmobitech/" target="_blank">LinkedIn</a> |
-                <a href="https://www.instagram.com/afsarmobitech/" target="_blank">Instagram</a> |
-                <a href="https://www.facebook.com/people/Afsar-Mobitech/61583477535849/" target="_blank">Facebook</a>
-            </p>
-        </section>
+    <!-- MOBILE SERVICES -->
+    <section id="mobile" class="relative py-20 px-4 overflow-hidden" style="background: linear-gradient(180deg, #0f172a 0%, #1a1a2e 100%);">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
 
-    </div>
-</t>
-</t>
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: 3D Phone -->
+                <div class="reveal flex justify-center" style="perspective: 800px;">
+                    <div class="phone-3d relative">
+                        <div class="w-64 h-[500px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-[40px] border-4 border-slate-600 shadow-2xl shadow-blue-500/10 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+                            <!-- Phone notch -->
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-950 rounded-b-2xl"></div>
+                            <!-- Screen content -->
+                            <div class="text-center mt-4">
+                                <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+                                    <span class="text-3xl font-black">A</span>
+                                </div>
+                                <h3 class="text-lg font-bold">AFSAR MOBITECH</h3>
+                                <p class="text-xs text-slate-400 mt-2">Mobile Expert</p>
+                                <div class="mt-6 space-y-2">
+                                    <div class="bg-green-500/20 text-green-400 text-xs px-3 py-1.5 rounded-full">Screen Repair</div>
+                                    <div class="bg-blue-500/20 text-blue-400 text-xs px-3 py-1.5 rounded-full">Battery Replace</div>
+                                    <div class="bg-purple-500/20 text-purple-400 text-xs px-3 py-1.5 rounded-full">Software Fix</div>
+                                    <div class="bg-orange-500/20 text-orange-400 text-xs px-3 py-1.5 rounded-full">Charging Issue</div>
+                                </div>
+                            </div>
+                            <!-- Reflection -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none rounded-[36px]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="reveal">
+                    <span class="inline-block bg-green-500/10 text-green-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-green-500/20 mb-4">MOBILE SERVICES</span>
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight">
+                        Expert Mobile<br>
+                        <span class="gradient-text">Repair &amp; Sales</span>
+                    </h2>
+                    <p class="text-slate-400 mt-4 leading-relaxed">Professional mobile repair services with genuine parts and warranty. We fix all brands and models.</p>
+
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start gap-4 bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 service-icon-3d">
+                            <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Screen Replacement</h4>
+                                <p class="text-slate-400 text-sm">Original &amp; compatible screens for all brands</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 service-icon-3d">
+                            <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><rect x="6" y="7" width="12" height="10" rx="1"/><path d="M18 12h2"/><path d="M4 12h2"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Battery Replacement</h4>
+                                <p class="text-slate-400 text-sm">Genuine batteries with health guarantee</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 service-icon-3d">
+                            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Software &amp; Charging Fix</h4>
+                                <p class="text-slate-400 text-sm">Software updates, flashing &amp; charging port repair</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 service-icon-3d">
+                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Phone Sales &amp; Accessories</h4>
+                                <p class="text-slate-400 text-sm">New &amp; refurbished phones, cases, chargers &amp; more</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="bg-slate-950 py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="inline-block bg-purple-500/10 text-purple-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-purple-500/20 mb-4">ABOUT US</span>
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight">
+                        Trusted &amp; Reliable<br>
+                        <span class="gradient-text">Since Day One</span>
+                    </h2>
+                    <p class="text-slate-400 mt-6 leading-relaxed">
+                        AFSAR MOBITECH is a trusted CSC authorized center providing fast, accurate and transparent digital services along with mobile repair and sales. Customer satisfaction and reliability are our top priority.
+                    </p>
+                    <p class="text-slate-400 mt-4 leading-relaxed">
+                        Located in the heart of Vadodara, we serve thousands of customers with government services, banking solutions, and expert mobile repairs every month.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                            <div class="text-2xl font-black text-blue-400">CSC</div>
+                            <div class="text-xs text-slate-400 mt-1">Authorized Centre</div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                            <div class="text-2xl font-black text-green-400">GSTIN</div>
+                            <div class="text-xs text-slate-400 mt-1">Registered Business</div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                            <div class="text-2xl font-black text-purple-400">UDYAM</div>
+                            <div class="text-xs text-slate-400 mt-1">Certified MSME</div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
+                            <div class="text-2xl font-black text-orange-400">GJ</div>
+                            <div class="text-xs text-slate-400 mt-1">GJCSCBC Member</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D About Visual -->
+                <div class="reveal flex justify-center" style="perspective: 800px;">
+                    <div class="relative" style="transform-style: preserve-3d; animation: aboutFloat 6s ease-in-out infinite;">
+                        <div class="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-3xl border border-slate-700/50 backdrop-blur-sm flex items-center justify-center" style="transform: rotateY(-5deg) rotateX(5deg);">
+                            <div class="text-center p-8">
+                                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto shadow-2xl shadow-blue-500/30" style="transform: translateZ(40px);">
+                                    <span class="text-5xl font-black">A</span>
+                                </div>
+                                <h3 class="text-2xl font-black mt-6" style="transform: translateZ(20px);">AFSAR MOBITECH</h3>
+                                <p class="text-slate-400 text-sm mt-2" style="transform: translateZ(10px);">Your Digital Partner</p>
+                                <div class="flex justify-center gap-2 mt-4" style="transform: translateZ(15px);">
+                                    <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                                    <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+                                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                                    <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Floating cards -->
+                        <div class="absolute -top-4 -right-4 bg-green-500/20 border border-green-500/30 rounded-xl px-3 py-2 text-xs text-green-400 backdrop-blur-sm" style="animation: floatSmall 4s ease-in-out infinite;">Trusted</div>
+                        <div class="absolute -bottom-4 -left-4 bg-blue-500/20 border border-blue-500/30 rounded-xl px-3 py-2 text-xs text-blue-400 backdrop-blur-sm" style="animation: floatSmall 4s ease-in-out infinite 1s;">Reliable</div>
+                        <div class="absolute top-1/2 -right-6 bg-purple-500/20 border border-purple-500/30 rounded-xl px-3 py-2 text-xs text-purple-400 backdrop-blur-sm" style="animation: floatSmall 4s ease-in-out infinite 2s;">Fast</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @keyframes aboutFloat {
+            0%, 100% { transform: rotateY(-5deg) rotateX(5deg); }
+            50% { transform: rotateY(5deg) rotateX(-3deg); }
+        }
+        @keyframes floatSmall {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+
+    <!-- CONTACT -->
+    <section id="contact" class="relative py-20 px-4" style="background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center reveal">
+                <span class="inline-block bg-orange-500/10 text-orange-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-orange-500/20 mb-4">CONTACT US</span>
+                <h2 class="text-4xl md:text-5xl font-black">
+                    Get In <span class="gradient-text">Touch</span>
+                </h2>
+                <p class="text-slate-300 mt-4 max-w-xl mx-auto">Visit us or reach out through any of these channels. We are here to help!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+                <!-- Location -->
+                <div class="card-3d reveal">
+                    <div class="card-3d-inner bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center h-full">
+                        <div class="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Our Location</h3>
+                        <p class="text-slate-300 text-sm mt-3 leading-relaxed">Plot No. 145, Tower A, GF-7, Bharat Complex Por GIDC, Raman Gamdi, Por Taluka: Vadodara, Gujarat 391243</p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="card-3d reveal" style="transition-delay: 0.1s;">
+                    <div class="card-3d-inner bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center h-full">
+                        <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Phone Number</h3>
+                        <a href="tel:8320394380" class="text-green-400 text-xl font-bold block mt-3 hover:text-green-300 transition">8320394380</a>
+                        <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" class="inline-block mt-4 bg-green-500/20 text-green-400 text-sm font-semibold px-4 py-2 rounded-full border border-green-500/30 hover:bg-green-500/30 transition">WhatsApp Us</a>
+                    </div>
+                </div>
+
+                <!-- Registration -->
+                <div class="card-3d reveal" style="transition-delay: 0.2s;">
+                    <div class="card-3d-inner bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center h-full">
+                        <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Registrations</h3>
+                        <div class="mt-3 space-y-2 text-sm">
+                            <p class="text-slate-300"><span class="text-blue-400 font-semibold">GSTIN:</span> 24KCVPK4570E1Z5</p>
+                            <p class="text-slate-300"><span class="text-purple-400 font-semibold">UDYAM:</span> UDYAM-GJ-24-0044877</p>
+                            <p class="text-slate-300"><span class="text-green-400 font-semibold">Member:</span> GJCSCBC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map embed -->
+            <div class="mt-12 reveal rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5!2d73.22!3d22.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPor%2C+Vadodara%2C+Gujarat+391243!5e0!3m2!1sen!2sin!4v1700000000000" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0; filter: invert(0.9) hue-rotate(180deg) brightness(0.8) contrast(1.2);" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <section class="bg-slate-950 py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h3 class="text-2xl font-bold mb-8">Follow Us On Social Media</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" class="social-icon flex items-center gap-2 bg-green-500/10 border border-green-500/20 text-green-400 px-5 py-3 rounded-xl hover:bg-green-500/20 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="https://www.instagram.com/afsarmobitech/" target="_blank" class="social-icon flex items-center gap-2 bg-pink-500/10 border border-pink-500/20 text-pink-400 px-5 py-3 rounded-xl hover:bg-pink-500/20 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Instagram
+                </a>
+                <a href="https://www.facebook.com/people/Afsar-Mobitech/61583477535849/" target="_blank" class="social-icon flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-5 py-3 rounded-xl hover:bg-blue-500/20 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </a>
+                <a href="https://www.youtube.com/@AfsarMobitech" target="_blank" class="social-icon flex items-center gap-2 bg-red-500/10 border border-red-500/20 text-red-400 px-5 py-3 rounded-xl hover:bg-red-500/20 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    YouTube
+                </a>
+                <a href="https://x.com/AfsarMobitech" target="_blank" class="social-icon flex items-center gap-2 bg-slate-500/10 border border-slate-500/20 text-slate-300 px-5 py-3 rounded-xl hover:bg-slate-500/20 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    X (Twitter)
+                </a>
+                <a href="https://www.linkedin.com/in/afsarmobitech/" target="_blank" class="social-icon flex items-center gap-2 bg-blue-600/10 border border-blue-600/20 text-blue-300 px-5 py-3 rounded-xl hover:bg-blue-600/20 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-black text-sm">A</div>
+                <span class="text-lg font-bold">AFSAR MOBITECH</span>
+            </div>
+            <p class="text-slate-500 text-sm">CSC Authorized Centre | Mobile Repair &amp; Sales | Vadodara, Gujarat</p>
+            <p class="text-slate-600 text-xs mt-4">Copyright 2024 Afsar Mobitech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/message/7DFELJHMA4OOL1" target="_blank" class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 hover:scale-110 transition-transform glow-pulse">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Generate floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#3b82f6', '#8b5cf6', '#22c55e', '#ec4899', '#f97316'];
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 6 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: ${color};
+                    left: ${Math.random() * 100}%;
+                    animation-duration: ${Math.random() * 15 + 10}s;
+                    animation-delay: ${Math.random() * 10}s;
+                `;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current).toLocaleString() + '+';
+                }, 16);
+            });
+        }
+
+        // Trigger counters when in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('[data-count]');
+        if (statsSection) {
+            statsObserver.observe(statsSection.closest('section'));
+        }
+
+        // 3D tilt effect on cards
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                card.querySelector('.card-3d-inner').style.transform = 
+                    `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.card-3d-inner').style.transform = 'rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
